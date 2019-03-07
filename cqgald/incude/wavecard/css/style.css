@@ -7,16 +7,16 @@
 
 .waveCard {
     position: relative;
-    padding: 50px 0;
-    width: 15%;
-    min-width: 200px;
-    height: 50vh;
+    /* padding: 50px 0; */
+    width: 15vw;
+    min-width: 250px;
+    height: 15vw;
     background-color: aquamarine;
     margin: 20px auto;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 
 .waveCard1 {
@@ -28,7 +28,7 @@
 }
 
 .waveCard3 {
-    width: 30%;
+    /* width: 30%; */
     background-image: url(../../../img/work/03.jpg);
 }
 

@@ -81,7 +81,7 @@ $(document).ready(function() {
         var workpos = Math.min(workkey + scrollRate / 2, 1);
         var contactpos = Math.min(contactkey + scrollRate, 1);
 
-        var logopos = $(".galdCicle").offset().top + 60
+        var logopos = $(".galdCicle").offset().top + 30
         $(".sliders").height(logopos);
 
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
 
         if (scrollPos < logopos) {
 
-            TweenMax.to($(".headerImg"), 1, { top: scrollPos * 1.2 });
+            TweenMax.to($(".headerImg"), 1, { top: scrollPos * 1.1 });
         }
 
 
