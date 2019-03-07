@@ -10,12 +10,12 @@ $(document).ready(function() {
     function waveIn() {
         console.log("cardHeight: " + cardHeight)
         TweenMax.to($(this).children(".waveCont"), 2, { top: cardHeight, ease: Elastic.easeOut.config(1.3, 0.3) });
-        console.log($(this).children(".parallax"))
+        console.log($(this).children(".useWave"))
     }
 
 
     function waveOut() {
-        TweenMax.to($(this).children(".waveCont"), 2, { top: 0, ease: Elastic.easeOut.config(1.3, 0.3) });
+        TweenMax.to($(this).children(".waveCont"), 2, { top: cardHeight/2, ease: Elastic.easeOut.config(1.3, 0.3) });
         console.log("waveOut")
     }
 

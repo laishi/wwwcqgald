@@ -23,6 +23,9 @@ $(document).ready(function() {
     var homeHeight = $(".galdhome").height();
 
 
+    $(".clipImg").width(window.innerWidth)
+
+
 
     // var homekey = $(".navHome").attr("keyPoints").split(";")[0] - 0.0;
     // var teamkey = $(".navTeam").attr("keyPoints").split(";")[0] - 0.0;
@@ -37,6 +40,9 @@ $(document).ready(function() {
 
     var logopos = $(".galdCicle").offset().top
     $(".sliders").height(800);
+
+
+    console.log("logopos " + logopos)
 
 
 
@@ -72,7 +78,6 @@ $(document).ready(function() {
 
 
 
-
     function scrollEvent(scrollPos) {
 
         var scrollRate = scrollPos / homeHeight;
@@ -81,10 +86,10 @@ $(document).ready(function() {
         var workpos = Math.min(workkey + scrollRate / 2, 1);
         var contactpos = Math.min(contactkey + scrollRate, 1);
 
-        var logopos = $(".galdCicle").offset().top + 30
+        logopos = $(".galdCicle").offset().top + 30
         $(".sliders").height(logopos);
 
-
+        console.log("logopos scrollEvent: " + logopos)
 
 
         if (scrollPos < logopos) {
@@ -211,5 +216,13 @@ $(document).ready(function() {
 
 
 
+    window.addEventListener('resize', function(event) {
+
+        windowW = window.innerWidth;
+        windowHS = windowW / 2;
+
+        // $(".clipImg").width(window.innerWidth)
+
+    });
 
 })
