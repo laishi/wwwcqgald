@@ -1,0 +1,18 @@
+.navPointer{
+    position: relative;
+    width: 100%;
+    background-color: #c0e22b;
+
+}
+
+.navCicle{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #2be2a7;
+    z-index: 1;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}

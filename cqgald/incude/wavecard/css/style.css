@@ -1,0 +1,137 @@
+.waveCards {
+    position: relative;
+    /* padding: 0 10%; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.waveCard {
+    position: relative;
+    padding: 50px 0;
+    width: 15%;
+    min-width: 200px;
+    height: 50vh;
+    background-color: aquamarine;
+    margin: 20px auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.waveCard1 {
+    background-image: url(../../../img/work/06.jpg);
+}
+
+.waveCard2 {
+    background-image: url(../../../img/work/hhl-adyh02.jpg);
+}
+
+.waveCard3 {
+    width: 30%;
+    background-image: url(../../../img/work/03.jpg);
+}
+
+.waveCard4 {
+    background-image: url(../../../img/work/zyb-ywmlc01.jpg);
+}
+
+.waveCard5 {
+    background-image: url(../../../img/work/09.jpg);
+}
+
+.waveCont {
+    position: relative;
+    width: 100%;
+    /* background-color: rgb(255, 210, 127); */
+    top: 200px;
+}
+
+.infoBox {
+    position: relative;
+    text-align: center;
+    background-color: #2e54aa;
+    text-align: center;
+    min-height: 100vh;
+    /* margin: -.1em 0 0 0; */
+    /* padding: 1em; */
+    color: #eee;
+    font-size: 2em;
+    font-weight: 300;
+    bottom: 0;
+    top: -50px;
+}
+
+.editorial {
+    position: relative;
+    /* display: block; */
+    width: 100%;
+    height: 150px;
+    max-height: 100vh;
+    margin: 0;
+    top: 0px;
+}
+
+::selection {
+    background-color: salmon;
+    color: white;
+}
+
+.parallax>use {
+    animation: move-forever 12s linear infinite;
+}
+
+.parallax>use:nth-child(1) {
+    animation-delay: -2s;
+}
+
+.parallax>use:nth-child(2) {
+    animation-delay: -2s;
+    animation-duration: 5s;
+}
+
+.parallax>use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 3s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate(-90px, 0%);
+    }
+    100% {
+        transform: translate(85px, 0%);
+    }
+}
+
+.infoBox {
+    font-size: 1em;
+}
+
+.infoBox h1 {
+    margin-top: -1.3em;
+    font-weight: 100;
+    font-size: 5em;
+    user-select: none;
+    cursor: default;
+}
+
+
+/*prevent many large-by-comparison ripples by shrinking the height*/
+
+@media (max-width: 50em) {
+    .infoBox h1 {
+        font-size: 12vmax;
+    }
+    .editorial {
+        height: 17vw;
+    }
+}
+
+h1 {
+    outline: none;
+}
+
+body {
+    background-color: #234;
+}

@@ -1,0 +1,42 @@
+.page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.galdhome {
+    overflow: hidden;
+    width: 100%;
+    height: inherit;
+    background-color: #ccc;
+}
+
+.galdserver {
+    width: 100%;
+    background-color: blue;
+}
+
+.galdworkflow {
+    width: 100%;
+    background-color: yellowgreen;
+}
+
+.galdVideo {
+    width: 100%;
+    background-color: saddlebrown;
+}
+
+.galdTeam {
+    width: 100%;
+    background-color: salmon;
+}
+
+.galdwork {
+    width: 100%;
+    background-color: slateblue;
+}
+
+.galdcontact {
+    width: 100%;
+    background-color: aqua;
+}
