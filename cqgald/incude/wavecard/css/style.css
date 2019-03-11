@@ -8,11 +8,12 @@
 .waveCard {
     position: relative;
     /* padding: 50px 0; */
-    width: 15vw;
-    /* min-width: 10vw; */
-    height: 15vw;
+    width: 18vw;
+    height: 18vw;
+    min-width: 200px;
+    min-height: 200px;
     background-color: aquamarine;
-    margin: 100px auto;
+    margin: 10vh auto;
     overflow: hidden;
     background-size: cover;
     background-position: center;
@@ -28,7 +29,6 @@
 }
 
 .waveCard3 {
-    /* width: 30%; */
     background-image: url(../../../img/work/03.jpg);
 }
 
@@ -53,13 +53,15 @@
     background-color: #2e54aa;
     text-align: center;
     min-height: 100vh;
-    /* margin: -.1em 0 0 0; */
-    /* padding: 1em; */
     color: #eee;
-    font-size: 2em;
-    font-weight: 300;
-    bottom: 0;
-    top: -50px;
+    top: -100px;
+}
+
+.infoBox h1 {
+    position: relative;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 5em;
 }
 
 .editorial {
@@ -104,18 +106,6 @@
     }
 }
 
-.infoBox {
-    font-size: 1em;
-}
-
-.infoBox h1 {
-    margin-top: -1.3em;
-    font-weight: 100;
-    font-size: 5em;
-    user-select: none;
-    cursor: default;
-}
-
 
 /*prevent many large-by-comparison ripples by shrinking the height*/
 
@@ -130,8 +120,4 @@
 
 h1 {
     outline: none;
-}
-
-body {
-    background-color: #234;
 }
