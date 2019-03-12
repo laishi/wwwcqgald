@@ -31,11 +31,28 @@ $(document).ready(function() {
     var prevGrid
     var nextGrid
 
+
+
     var scrolling = 1
+
+
+
+
+    var indexImg = 0
+    var imgs = []
+
+    var navImg = 0
+
+    $(".gridImg").each(function(index, element) {
+        imgs.push($(this).attr("src"))
+
+    });
 
     grid.click(function(item) {
 
         currentGrid = $(this)
+        navImg = $(this).index()
+        console.log("gridClick: " + navImg)
 
 
         scrollTop = $(window).scrollTop();
@@ -66,12 +83,12 @@ $(document).ready(function() {
 
 
 
+
             gridWidth = $(this).width()
             gridHeight = $(this).height()
 
             var scaleWidth = 720 / gridWidth
 
-            console.log("scaleWidth: " + scaleWidth)
 
             gridX = $(this).offset().left
             gridY = $(this).offset().top
@@ -79,12 +96,10 @@ $(document).ready(function() {
             centerX = windowWidth / 2 - gridX - gridWidth / 2;
             centerY = scrollTop + windowHeight / 2 - gridY - gridHeight / 2;
 
-            console.log("clickscrollPos: " + scrollTop)
 
             TweenMax.to($(this), 0.3, { scale: scaleWidth, x: "+=" + centerX, y: "+=" + centerY, ease: Power2.easeIn })
 
             TweenMax.to($(this).find("h1"), 0.3, { fontSize: 18 / scaleWidth + "px" })
-            console.log("text: " + $(this).children("h1").text())
 
             TweenMax.set($(this), { backgroundColor: "#39296b" })
 
@@ -92,8 +107,6 @@ $(document).ready(function() {
             moveDown(nextGrid)
 
 
-            console.log("offset(): " + $(this).offset().top)
-            console.log("index: " + grid.index(grid))
 
             // TweenMax.to($(this), 0.3, { scale: 2 })
 
@@ -109,13 +122,56 @@ $(document).ready(function() {
 
 
 
+    var expandImg = $(".gridActiv").find(".gridImg")
+
+    $(".preBtn").click(function() {
+
+        TweenMax.to($(".gridActiv").find(".gridImg"), 0.3, { x: -gridWidth, opacite: 0, ease: Power3.easeIn, onComplete: slideLeft })
+
+    });
+
+    $(".nextBtn").click(function() {
+        TweenMax.to($(".gridActiv").find(".gridImg"), 0.3, { x: +gridWidth, opacite: 0, ease: Power3.easeIn, onComplete: slideRight })
+
+    });
+
+
+    function slideLeft() {
+        navImg += 1
+
+        if (navImg > imgs.length - 1) {
+            navImg = 0
+        }
+        console.log("pre: " + navImg)
+        $(".gridActiv").find(".gridImg").attr("src", imgs[navImg])
+        TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeOut })
+    }
+
+    function slideRight() {
+        navImg -= 1
+
+        if (navImg < 0) {
+            navImg = imgs.length
+        }
+        console.log("next: " + navImg)
+        $(".gridActiv").find(".gridImg").attr("src", imgs[navImg])
+        TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: -gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeIn })
+    }
+
+
+
+
+
+
+
+
+
 
     $(window).scroll(function() {
         var windowScrollPos = $(window).scrollTop();
 
         if (scrollTop != windowScrollPos && grid.hasClass("gridActiv") && scrolling) {
             TweenMax.to($(".gridActiv"), 0.3, { scaleX: 1, scaleY: 1, x: "-=" + centerX, y: "-=" + centerY, ease: Power4.easeOut })
-            console.log("test scroll ")
             moveUp(nextGrid)
             moveDown(prevGrid)
 
@@ -124,7 +180,7 @@ $(document).ready(function() {
         }
 
 
-        console.log("myscrollPos: " + windowScrollPos)
+
     });
 
 
