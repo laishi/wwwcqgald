@@ -89,10 +89,6 @@ $(document).ready(function() {
         logopos = $(".galdCicle").offset().top + 30
         $(".sliders").height(logopos);
 
-        console.log("logopos scrollEvent: " + logopos)
-
-        // $('.waveCont').css("top", scrollPos / 10)
-
 
         if (scrollPos < logopos) {
 
