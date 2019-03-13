@@ -66,11 +66,17 @@ $(document).ready(function() {
 
         if ($(this).hasClass("gridActiv")) {
 
+            TweenMax.to($(".preBtn"), 0.3, { x: windowWidth, scale: 0, opacity: 0, ease: Elastic.easeIn.config(1, 0.3) })
+            TweenMax.to($(".nextBtn"), 0.3, { x: -windowWidth, scale: 0, opacity: 0, ease: Elastic.easeIn.config(1, 0.3), onComplete: hideBtn })
+
+
+
+
+
+
+
+
             $(this).find(".gridImg").attr("src", imgs[currentImg])
-
-
-
-            console.log("gridClick: " + imgs[currentImg])
 
             TweenMax.to($(this), 0.3, { scaleX: 1, scaleY: 1, x: "-=" + centerX, y: "-=" + centerY, ease: Power4.easeOut })
 
@@ -84,7 +90,7 @@ $(document).ready(function() {
 
             $(".gridCloseBtn").toggleClass("gridActiv");
 
-            TweenMax.to($(this).find("h1"), 0.3, { fontSize: 18 + "px" })
+            TweenMax.set($(this).find("h1"), { fontSize: 12 + "px" })
 
 
 
@@ -98,6 +104,8 @@ $(document).ready(function() {
 
             var scaleWidth = 720 / gridWidth
 
+            console.log("scaleWidth: " + scaleWidth)
+
 
             gridX = $(this).offset().left
             gridY = $(this).offset().top
@@ -105,12 +113,21 @@ $(document).ready(function() {
             centerX = windowWidth / 2 - gridX - gridWidth / 2;
             centerY = scrollTop + windowHeight / 2 - gridY - gridHeight / 2;
 
+            var navBtnPos = gridY - $(".navBtn").offset().top + centerY + $(".navBtn").width()
+
+            // navBtn
+            TweenMax.set($(".navBtn"), { opacity: 1, top: navBtnPos })
+            TweenMax.to($(".preBtn"), 0.5, { x: windowWidth / -2 + 200, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.3) })
+            TweenMax.to($(".nextBtn"), 0.5, { x: windowWidth / 2 - 200, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.3) })
+
+
+
 
             TweenMax.to($(this), 0.3, { scale: scaleWidth, x: "+=" + centerX, y: "+=" + centerY, ease: Power2.easeIn })
 
             TweenMax.to($(this).find("h1"), 0.3, { fontSize: 18 / scaleWidth + "px" })
 
-            TweenMax.set($(this), { backgroundColor: "#39296b" })
+            // TweenMax.set($(this), { backgroundColor: "#39296b" })
 
             moveUp(prevGrid)
             moveDown(nextGrid)
@@ -122,8 +139,8 @@ $(document).ready(function() {
             $(this).toggleClass("gridActiv");
             scrolling = 1
 
-            var gridCloseBtn = " <div class='gridCloseBtn'></div> "
-            $(this).append(gridCloseBtn);
+            // var gridCloseBtn = " <div class='gridCloseBtn'></div> "
+            // $(this).append(gridCloseBtn);
 
 
         }
@@ -162,7 +179,11 @@ $(document).ready(function() {
             navImg = imgs.length
         }
         $(".gridActiv").find(".gridImg").attr("src", imgs[navImg])
-        TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: -gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeIn })
+        TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: -gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeOut })
+    }
+
+    function hideBtn() {
+        TweenMax.set($(".navBtn"), { opacity: 0, top: 0 })
     }
 
 
@@ -186,6 +207,10 @@ $(document).ready(function() {
 
             scrolling = 0
             currentGrid.toggleClass("gridActiv");
+
+            TweenMax.to($(".preBtn"), 0.3, { x: -windowWidth, ease: Elastic.easeIn.config(1, 0.3) })
+            TweenMax.to($(".nextBtn"), 0.3, { x: windowWidth, ease: Elastic.easeIn.config(1, 0.3), onComplete: hideBtn })
+
         }
 
 
