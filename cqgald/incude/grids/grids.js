@@ -42,6 +42,7 @@ $(document).ready(function() {
     var imgs = []
 
     var navImg = 0
+    var currentImg = 0
 
     $(".gridImg").each(function(index, element) {
         imgs.push($(this).attr("src"))
@@ -52,7 +53,8 @@ $(document).ready(function() {
 
         currentGrid = $(this)
         navImg = $(this).index()
-        console.log("gridClick: " + navImg)
+        currentImg = $(this).index()
+
 
 
         scrollTop = $(window).scrollTop();
@@ -63,6 +65,12 @@ $(document).ready(function() {
 
 
         if ($(this).hasClass("gridActiv")) {
+
+            $(this).find(".gridImg").attr("src", imgs[currentImg])
+
+
+
+            console.log("gridClick: " + imgs[currentImg])
 
             TweenMax.to($(this), 0.3, { scaleX: 1, scaleY: 1, x: "-=" + centerX, y: "-=" + centerY, ease: Power4.easeOut })
 
@@ -77,6 +85,7 @@ $(document).ready(function() {
             $(".gridCloseBtn").toggleClass("gridActiv");
 
             TweenMax.to($(this).find("h1"), 0.3, { fontSize: 18 + "px" })
+
 
 
         } else {
@@ -142,7 +151,6 @@ $(document).ready(function() {
         if (navImg > imgs.length - 1) {
             navImg = 0
         }
-        console.log("pre: " + navImg)
         $(".gridActiv").find(".gridImg").attr("src", imgs[navImg])
         TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeOut })
     }
@@ -153,7 +161,6 @@ $(document).ready(function() {
         if (navImg < 0) {
             navImg = imgs.length
         }
-        console.log("next: " + navImg)
         $(".gridActiv").find(".gridImg").attr("src", imgs[navImg])
         TweenMax.fromTo($(".gridActiv").find(".gridImg"), 0.3, { x: -gridWidth, opacite: 0, }, { x: 0, scale: 1, opacite: 1, ease: Power3.easeIn })
     }
@@ -174,6 +181,8 @@ $(document).ready(function() {
             TweenMax.to($(".gridActiv"), 0.3, { scaleX: 1, scaleY: 1, x: "-=" + centerX, y: "-=" + centerY, ease: Power4.easeOut })
             moveUp(nextGrid)
             moveDown(prevGrid)
+
+            $(".gridActiv").find(".gridImg").attr("src", imgs[currentImg])
 
             scrolling = 0
             currentGrid.toggleClass("gridActiv");
