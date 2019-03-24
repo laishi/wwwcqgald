@@ -17,10 +17,46 @@
     /* background-color: lemonchiffon; */
 }
 
+
+.titleMenus{
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    color: #ccc;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.titleMenus h1{
+    line-height: 60px;
+    font-size: 24px
+}
+.titleItems{
+    position: relative;
+    width: 80%;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.titleItem{
+    position: relative;
+    width: 20%;
+    float: left;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.titleItem h1{
+    text-align: center;
+}
+
+
+
+
+
 .curveBg {
     position: absolute;
 }
-
 
 .svgHeader {
     position: relative;
@@ -58,7 +94,7 @@
 .headerText {
     position: relative;
     text-indent: 2em;
-    margin-top: 500px;
+    margin-top: 600px;
     font-size: 18px;
     line-height: 36px;
 }
@@ -93,6 +129,7 @@
     height: 88vh;
     z-index: 1;
 }
+
 .galdjj {
     position: relative;
     padding: 1em 0;
@@ -174,8 +211,6 @@ circle {
     -moz-osx-font-smoothing: grayscale;
     color: white;
 }
-
-
 
 .iconLogo {
     font-family: "iconfont" !important;
@@ -288,6 +323,11 @@ circle {
     -o-animation-delay: 8s;
     animation-delay: 8s;
 }
+
+
+
+
+
 
 @-webkit-keyframes slideShow {
     0% {

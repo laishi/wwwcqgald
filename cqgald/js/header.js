@@ -42,8 +42,7 @@ $(document).ready(function() {
     $(".sliders").height(800);
 
 
-    console.log("logopos " + logopos)
-
+    $(".headerText").css("marginTop", $(".svgCurve").height() - $(".headerImg").height())
 
 
     TweenMax.to(".navHome", 1, { attr: { keyPoints: homekey + ";" + homekey }, ease: Elastic.easeOut.config(0.6, 0.3), y: -500 });

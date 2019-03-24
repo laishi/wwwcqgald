@@ -204,6 +204,7 @@ $(document).ready(function() {
             moveDown(prevGrid)
 
             $(".gridActiv").find(".gridImg").attr("src", imgs[currentImg])
+            TweenMax.set(currentGrid.find("h1"), { fontSize: 12 + "px" })
 
             scrolling = 0
             currentGrid.toggleClass("gridActiv");

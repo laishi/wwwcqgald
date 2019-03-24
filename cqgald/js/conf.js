@@ -1,57 +1,67 @@
 $(function () {
 
-    var navCicle = $(".navCicle")
 
+
+    var curentPage
+    var pageTitle
+    var curentPageTitle
 
     $.scrollify({
         section: ".page",
         //sectionName:false,
         // scrollSpeed: 1100,
-        before:function(i, item) {
 
-            function toret(params) {
-                TweenMax.to(navCicle, 0.3, {"borderRadius": "0%", "width":"100%"})
-            }
-            if (i === 1) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos, "width":"100px", "borderRadius": "50%", onComplete:toret})
-            }
 
-            if (i === 2) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos,"width":"100px", "borderRadius": "50%", onComplete:toret})
+
+
+        before: function (i, item) {
+            if (i > 0) {
+                curentPage = item[i]
+                pageTitle = curentPage.find(".titleItem")
+                TweenMax.to(pageTitle, 0.3, { scale: 0 });
+
+                TweenMax.to(pageTitle, 0.3, { scale: 1 });
             }
 
-            if (i === 3) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos,"width":"100px", "borderRadius": "50%", onComplete:toret})
-            }
 
-            if (i === 4) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos,"width":"100px", "borderRadius": "50%", onComplete:toret})
-            }
-
-            if (i === 5) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos,"width":"100px", "borderRadius": "50%", onComplete:toret})
-            }
-
-            if (i === 6) {
-                var ciclePos = item[i].offset().top
-                TweenMax.set(navCicle, {"top": 0,})
-                TweenMax.to(navCicle, 0.8, {"top": ciclePos,"width":"100px", "borderRadius": "50%", onComplete:toret})
-            }
         },
 
         after: function (i, item) {
 
+            if (i > 0) {
+                curentPage = item[i]
+                pageTitle = curentPage.find(".titleItem")
+                TweenMax.to(pageTitle, 0.3, { scale: 0 });
 
+                curentPageTitle = pageTitle[i - 1]
+                TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
+
+                pageTitle.click(function (index, item) {
+                    console.log($(this).scrollTop())
+                })
+
+
+                $(".titleMenus").hover(over, out);
+
+                function over() {
+                    // event.stopPropagation();
+                    TweenMax.to(pageTitle, 0.3, { scale: 0.8, alpha: 0.8});
+                    TweenMax.to(curentPageTitle, 0.3, { scale: 1, alpha: 1.0});
+                }
+            
+                function out() { 
+                    TweenMax.to(pageTitle, 0.3, { scale: 0 });
+                    TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
+                }
+
+
+            }
+
+
+
+            if (i === 1) {
+
+            }
 
         }
     });

@@ -15,3 +15,9 @@
     right: 0;
     margin: auto;
 }
+
+h1 {
+    font-size: 2em;
+    color: aliceblue;
+    line-height: 2.2em;
+}
