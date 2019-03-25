@@ -5,39 +5,55 @@
     overflow: hidden;
 }
 
-.galdhome {
+
+
+
+
+.page:nth-child(odd){
+    background-color: rgb(20, 37, 71);
+}
+
+
+.page:nth-child(even){
+    background-color: rgb(30, 82, 83);
+}
+
+#galdhome {
     overflow: hidden;
     width: 100%;
     height: inherit;
-    background-color: #ccc;
+    background-color: rgb(150, 150, 150);
 }
 
+
+
+/* 
 .galdserver {
     width: 100%;
-    background-color: blue;
+    background-color: rgb(100, 100, 100);
 }
 
 .galdworkflow {
     width: 100%;
-    background-color: yellowgreen;
+    background-color: rgb(150, 150, 150);
 }
 
 .galdVideo {
     width: 100%;
-    background-color: saddlebrown;
+    background-color: rgb(100, 100, 100);
 }
 
 .galdTeam {
     width: 100%;
-    background-color: salmon;
+    background-color: rgb(150, 150, 150);
 }
 
 .galdwork {
     width: 100%;
-    background-color: slateblue;
+    background-color: rgb(100, 100, 100);
 }
 
 .galdcontact {
     width: 100%;
-    background-color: aqua;
-}
+    background-color: rgb(150, 150, 150);
+} */

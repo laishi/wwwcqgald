@@ -365,13 +365,12 @@ $(function() {
         directionRightText: "&rsaquo;",
         rotationSpeed: 750,
         slideHeight: Math.min(380, window.innerWidth - 80),
-        slideWidth: Math.min(380, window.innerWidth - 80),
+        slideWidth: Math.min(520, window.innerWidth - 80),
         rotationSpeed: 800,
         beforeRotationStart: function() {
 
         },
         afterRotationStart: function(item) {
-            TweenMax.staggerTo($(".rotateSlideItem").children(), 0.5, { top: "0px", ease: Elastic.easeOut.config(1.3, 0.3) });
 
         },
         beforeRotationEnd: function() {},

@@ -6,10 +6,15 @@
     width: 480px;
 }
 
-.rotating-slider h1 {
-    font-size: 18px;
-    line-height: 36px;
+.teamIntra{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 50px;
+    color: #ecf0f1;
+    z-index: 100;
 }
+
 
 .teamHead {
     position: relative;
@@ -22,17 +27,13 @@
     z-index: 1;
     overflow: hidden;
     clip-path: none;
-    top: 500px;
-}
-
-.rotateActive {
-    /* top: 0px; */
+    /* top: 500px; */
 }
 
 .teamHead img {
     position: relative;
     bottom: 0;
-    width: 100%;
+    height: 100%;
 }
 
 .rotating-slider ul.direction-controls {
@@ -56,7 +57,7 @@
 }
 
 .rotating-slider ul.direction-controls li button {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.6);
     border: none;
     color: white;
     cursor: pointer;
@@ -68,10 +69,11 @@
     text-align: center;
     transition: background 0.25s;
     width: 1.5em;
+    border-radius: 100%;
 }
 
 .rotating-slider ul.direction-controls li button:hover {
-    background: rgba(0, 0, 0, 0.6);
+    background: #f00;;
 }
 
 .rotating-slider ul.slides {
@@ -86,8 +88,8 @@
     transform: translateX(-50%) rotate(0);
     transform-origin: center center;
     width: 100%;
-    background-color: rgb(153, 0, 255);
-    background-image: url(../../../img/Skyscrapers.png)
+    background-color: rgb(10, 10, 10);
+    /* background-image: url(../../../img/Skyscrapers.png) */
 }
 
 .rotating-slider ul.slides li {
@@ -104,14 +106,33 @@
     width: 100%;
 }
 
-.rotating-slider ul.slides li {
-    color: #fff;
-    background: rgb(31, 31, 31);
+
+
+.rotating-slider ul.slides li h1 {    
+    font-size: 32px;
+    line-height: 50px;
 }
 
+.rotating-slider ul.slides li p {
+    font-size: 18px;
+    line-height: 36px;
+}
+
+
+
+
+
 .rotating-slider ul.slides li:nth-of-type(odd) {
-    color: rgb(31, 31, 31);
-    background: rgb(221, 221, 221);
+    background-color: rgb(221, 221, 221);
+}
+
+.rotating-slider ul.slides li:nth-of-type(odd) h1{
+    color: rgb(10, 10, 10);
+}
+
+.rotating-slider ul.slides li:nth-of-type(even) {
+    color: rgb(221, 221, 221);
+    background-color: rgb(31, 31, 31);
 }
 
 
