@@ -3,6 +3,7 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
+
 }
 
 
@@ -11,11 +12,13 @@
 
 .page:nth-child(odd){
     background-color: rgb(20, 37, 71);
+    background-size: 22px 22px;
 }
 
 
 .page:nth-child(even){
     background-color: rgb(30, 82, 83);
+    background-size: 22px 22px;
 }
 
 #galdhome {
