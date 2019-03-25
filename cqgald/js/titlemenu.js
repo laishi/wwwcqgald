@@ -26,7 +26,6 @@ $(document).ready(function () {
     
     $(".page").not(".galdhome").prepend(titleMenus)
     
-    console.log(titleMenus)
 
     
 
@@ -37,7 +36,6 @@ $(document).ready(function () {
 
 
 
-    // $(".accordionCont p").css("top", "200px")
 
 
     var n = $(".page").not(".galdhome").length; // Div count

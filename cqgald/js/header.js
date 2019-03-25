@@ -89,10 +89,10 @@ $(document).ready(function() {
         $(".sliders").height(logopos);
 
 
-        if (scrollPos < logopos) {
+        var minPos = Math.min(logopos, scrollPos);
+        TweenMax.to($(".headerImg"), 1, { top: minPos });
 
-            TweenMax.to($(".headerImg"), 1, { top: scrollPos * 1.1 });
-        }
+        console.log(minPos)
 
 
 
