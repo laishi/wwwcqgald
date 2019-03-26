@@ -31,48 +31,48 @@ $.scrollify({
 
 
         before: function (i, item) {
-            // if (i > 0) {
-            //     curentPage = item[i]
-            //     pageTitle = curentPage.find(".titleItem")
-            //     TweenMax.to(pageTitle, 0.3, { scale: 0 });
+            if (i > 0) {
+                curentPage = item[i]
+                pageTitle = curentPage.find(".titleItem")
+                TweenMax.to(pageTitle, 0.3, { scale: 0 });
 
-            //     TweenMax.to(pageTitle, 0.3, { scale: 1 });
-            // }
+                TweenMax.to(pageTitle, 0.3, { scale: 1 });
+            }
 
-            // $(".pageCont").css("display", "block");
+            $(".pageCont").css("display", "block");
 
         },
 
         after: function (i, item) {
 
-            // if (i > 0) {
-            //     curentPage = item[i]
-            //     pageTitle = curentPage.find(".titleItem")
-            //     TweenMax.to(pageTitle, 0.3, { scale: 0 });
+            if (i > 0) {
+                curentPage = item[i]
+                pageTitle = curentPage.find(".titleItem")
+                TweenMax.to(pageTitle, 0.3, { scale: 0 });
 
-            //     curentPageTitle = pageTitle[i - 1]
-            //     TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
+                curentPageTitle = pageTitle[i - 1]
+                TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
 
-            //     pageTitle.click(function (index, item) {
-            //         console.log($(this).scrollTop())
-            //     })
+                pageTitle.click(function (index, item) {
+                    console.log($(this).scrollTop())
+                })
 
 
-            //     $(".titleMenus").hover(over, out);
+                $(".titleMenus").hover(over, out);
 
-            //     function over() {
-            //         // event.stopPropagation();
-            //         TweenMax.to(pageTitle, 0.3, { scale: 0.8, alpha: 0.8});
-            //         TweenMax.to(curentPageTitle, 0.3, { scale: 1, alpha: 1.0});
-            //     }
+                function over() {
+                    // event.stopPropagation();
+                    TweenMax.to(pageTitle, 0.3, { scale: 0.8, alpha: 0.8});
+                    TweenMax.to(curentPageTitle, 0.3, { scale: 1, alpha: 1.0});
+                }
             
-            //     function out() { 
-            //         TweenMax.to(pageTitle, 0.3, { scale: 0 });
-            //         TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
-            //     }
+                function out() { 
+                    TweenMax.to(pageTitle, 0.3, { scale: 0 });
+                    TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
+                }
 
 
-            // }
+            }
 
 
 
