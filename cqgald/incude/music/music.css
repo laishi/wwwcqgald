@@ -101,7 +101,7 @@ label.main:hover:before {
 }
 
 .coverImage {
-  /* background: url('../../img/music.gif') no-repeat; */
+  background: url('../../img/music.gif') no-repeat;
   background-size: cover;
   width: 100%;  
   height: 40vh;

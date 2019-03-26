@@ -16,10 +16,16 @@ $(function () {
     var pageTitle
     var curentPageTitle
 
-    $.scrollify({
-        section: ".page",
-        //sectionName:false,
-        // scrollSpeed: 1100,
+$.scrollify({
+		section : ".page",
+		sectionName : "section-name",
+		easing: "easeOutExpo",
+		scrollSpeed: 1100,
+		offset : 0,
+		scrollbars: true,
+
+		afterResize:function() {},
+
 
 
 

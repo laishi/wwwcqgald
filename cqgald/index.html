@@ -144,12 +144,12 @@
 
 
                     <symbol id="maskImg">
-                        <!-- <image class="clipImg" xlink:href="img/eyessvg.png" x="0" y="0" width="100%" height="100%" />
+                        <image class="clipImg" xlink:href="img/eyessvg.png" x="0" y="0" width="100%" height="100%" />
                         <image class="clipImg" xlink:href="img/Architecture.png" x="0" y="0" width="100%"
                             height="100%" />
                         <image class="clipImg" xlink:href="img/Skyscrapers.png" x="0" y="0" width="100%"
                             height="100%" />
-                        <image class="clipImg" xlink:href="img/Lights.png" x="0" y="0" width="100%" height="100%" /> -->
+                        <image class="clipImg" xlink:href="img/Lights.png" x="0" y="0" width="100%" height="100%" />
                     </symbol>
 
                     <text class="sliderText" font-size="24" x="50%" y="200" fill="#ccc"
@@ -1279,9 +1279,55 @@
 
 
 
+        <article class="screen">
+            <input type="checkbox" value="None" id="magicButton" name="check" />
+            <label class="main" for="magicButton"></label>
+
+            <div class="coverImage"></div>
+            <div class="search"></div>
+            <div class="bodyPlayer"></div>
+
+            <table class="list">
+
+            </table>
+
+
+            <div class="bar"></div>
+
+            <div class="info">
+                <h1>联系我们</h1>
+                <p>联系人：刘先生</p>
+                <p>电话：13640566324</p>
+                <p>QQ：504677424</p>
+            </div>
 
 
 
+
+            <audio preload="auto" id="audio" controls>
+                <source src="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3">
+                <source src="http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.ogg">
+            </audio>
+            <table class="player">
+                <td><input type="checkbox" id="backward" /><label class="backward" for="backward"></label></td>
+                <td><input type="checkbox" id="play" title="Play" onclick="togglePlayPause()" /><label class="play"
+                        for="play"></label></td>
+                <td><input type="checkbox" id="forward" /><label class="forward" for="forward"></label></td>
+            </table>
+
+            <table class="footer">
+                <td><input type="checkbox" id="love" checked /><label class="love" for="love"></label></td>
+                <td><input type="checkbox" id="shuffle" /><label class="shuffle" for="shuffle"></label></td>
+                <td><input type="checkbox" id="repeat" checked /><label class="repeat" for="repeat"></label></td>
+                <td><input type="checkbox" id="options" /><label class="options" for="options"></label></td>
+            </table>
+
+            <div class="current">
+                <h2>重庆光爱照明设计 用专业水平打动您 用敬业态度感动您</h2>
+            </div>
+
+
+        </article>
 
 
 
@@ -1301,13 +1347,14 @@
 <script src='js/TweenMax.min.js'></script>
 
 <script src='js/header.js'></script>
-<script src='js/titlemenu.js'></script>
+
 <script src="incude/wavecard/js/waveCard.js"></script>
 <script src="incude/grids/grids.js"></script>
 <script src="incude/accordion/js/accordion.js"></script>
 <script src="incude/rotatingSlider/js/index.js"></script>
 <script src="incude/music/music.js"></script>
 
+<script src='js/titlemenu.js'></script>
 <script src='js/conf.js'></script>
 <script src='js/index.js'></script>
 
