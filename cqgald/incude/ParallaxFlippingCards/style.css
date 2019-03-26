@@ -5,15 +5,11 @@
 }
 
 .cards {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
+    display: -webkit-flex;
+    align-items: center;
     justify-content: center;
-    padding: 25vh 0;
+    margin-top: 25vh;
 }
 
 .card {
