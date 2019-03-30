@@ -59,9 +59,12 @@ $(document).ready(function() {
         repeatDelay: 0,
     });
 
-    starttw.set('.clipImg', { x: window.innerWidth, scale: 1, opacity: 0.2 });
+    // starttw.set('.clipImg', { x: window.innerWidth, scale: 1, opacity: 0.2 });
 
-    starttw.staggerTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: -window.innerWidth }, 5);
+    starttw.staggerTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: -window.innerWidth*2 }, 5);
+
+    // tl.fromTo(element, 1, {left:0}, {left:100});
+    // starttw.staggerFromTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: window.innerWidth },{ opacity: 1.2, x: -window.innerWidth*2 }, 5);
 
 
 
