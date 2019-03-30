@@ -34,12 +34,42 @@
 
         <div class="svgHeader">
 
+                <div class="menus">
+                    <div class="menuItem menu1"></div>
+                    <div class="menuItem menu2"></div>
+                    <div class="menuItem menu3"></div>
+                    <div class="menuItem menu4"></div>
+                    <div class="menuItem menu5"></div>
+                </div>
 
 
-            <svg class="svgCurveBg" width="100%" viewbox="0 0 1920 920" preserveAspectRatio="xMidYMax slice"
+
+
+            <svg class="svgCurveBg" width="100%" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice"
                 version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                <path id="curveBg" class="svgBg" d="M 0 700 Q 960 1000 1920 700 V 0 H 0 Z"></path>
+
+                <symbol id="bgPath">
+                    <path id="curveBg" class="svgBg" d="M 0 700 Q 960 1000 1920 700 V 0 H 0 Z">
+                    </path>
+                </symbol>
+
+                <use fill="rgb(3,3,8)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bgPath"></use>
+
+
+                <mask id="maskLink">
+                    <use fill="white" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bgPath"></use>
+                </mask>
+
+
+                <g mask="url(#maskLink)">
+                    <image class="clipImg" xlink:href="img/Architecture.png" x="100%" y="0" width="100%"
+                        height="100%" />
+                    <image class="clipImg" xlink:href="img/eyessvg.png" x="100%" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/Skyscrapers.png" x="100%" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/Lights.png" x="100%" y="0" width="100%" height="100%" />
+                </g>
+
 
             </svg>
 
@@ -47,30 +77,17 @@
 
 
             <div class="navSvg">
-                <svg class="svgCurve" viewbox="0 0 1920 920" preserveAspectRatio="xMidYMax slice" version="1.1"
+                <svg class="svgCurve" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
-                    <symbol id="maskBg">
-                        <g fill="white">
-                            <path id="svgBg" class="svgBg" d="M 0 700 Q 960 1000 1920 700 V 0 H 0 Z"></path>
-                        </g>
-                    </symbol>
-
-                    <mask id="maskLink">
-                        <use xlink:href="#maskBg" />
-                    </mask>
 
 
-                    <g mask="url(#maskLink)">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#maskImg"></use>
-                    </g>
-                    <path id="navCurve" stroke="red" fill="none" stroke-width="3" d="M 0 700 Q 960 1000 1920 700">
-                    </path>
-                    <path id="textCurve" stroke="none" fill="none" stroke-width="3" d="M 0 620 Q 960 920 1920 620">
+
+                    <path id="navCurve" class="navPath" stroke="red" fill="none" stroke-width="3"
+                        d="M 0 700 Q 960 1000 1920 700">
                     </path>
 
-
-
+<!-- 
                     <g class='navIcons'>
 
                         <a href="#galdhome">
@@ -139,33 +156,32 @@
                             </g>
                         </a>
 
-                    </g>
+                    </g> -->
 
 
 
-                    <symbol id="maskImg">
-                        <image class="clipImg" xlink:href="img/eyessvg.png" x="100%" y="0" width="100%" height="100%" />
-                        <image class="clipImg" xlink:href="img/Architecture.png" x="100%" y="0" width="100%"
-                            height="100%" />
-                        <image class="clipImg" xlink:href="img/Skyscrapers.png" x="100%" y="0" width="100%"
-                            height="100%" />
-                        <image class="clipImg" xlink:href="img/Lights.png" x="100%" y="0" width="100%" height="100%" />
-                    </symbol>
 
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc"
-                        text-anchor="middle">我们为每一盏灯精确配光，满足您对灯光的极致体验</text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc"
-                        text-anchor="middle">融合智能照明控制，呈现美轮美奂的效果</text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc"
-                        text-anchor="middle">优秀建筑照明设计，是为了我们的天空更美妙</text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc"
-                        text-anchor="middle">国际灯光节作品，也许可以代表我们的行业水平</text>
-                    <text font-family="Verdana" font-size="38">
-                        <textPath class="galdText" x='0' y='0' xlink:href="#textCurve" startOffset="50%"
-                            text-anchor="middle" fill='white'>
+
+                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                        我们为每一盏灯精确配光，满足您对灯光的极致体验
+                    </text>
+                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                        融合智能照明控制，呈现美轮美奂的效果
+                    </text>
+                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                        优秀建筑照明设计，是为了我们的天空更美妙
+                    </text>
+                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                        国际灯光节作品，也许可以代表我们的行业水平
+                    </text>
+
+
+                    <!-- <text x='0' y=500 font-size="38">
+                        <textPath class="galdText" xlink:href="#navCurve" startOffset="50%" text-anchor="middle"
+                            fill='white'>
                             光 爱 照 明 设 计
                         </textPath>
-                    </text>
+                    </text> -->
 
 
 

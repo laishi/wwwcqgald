@@ -1,10 +1,9 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     var svgBox = document.getElementById("svgBox");
     var curveBg = document.getElementById("curveBg");
     var svgBg = document.getElementById("svgBg");
     var navCurve = document.getElementById("navCurve");
-    var textCurve = document.getElementById("textCurve");
 
 
     var last_known_scroll_position = 0;
@@ -14,16 +13,110 @@ $(document).ready(function() {
     var rate = 1.8;
     var sliderScrollHeight;
 
-    var svgScrollH = parseInt(svgBg.getAttribute("d").split(" ")[5]);
+    var svgScrollH = parseInt(curveBg.getAttribute("d").split(" ")[5]);
     var fixHeaderHeight = 150;
     var windowW = window.innerWidth;
-    var windowHS = 960;
+    var windowH = window.innerHeight;
+    var windowHS = windowW / 2;
     var svgBaseHeight = window.innerHeight / rate;
 
-    var homeHeight = $(".galdhome").height();
+
+
+
+
+    // var svgHeight = windowH / 1.2
+    var svgHeight = 700
+    var radianHeight = 300
+    var resizeRadianHeight = radianHeight * (windowW / windowH / 2)
+    var svgRadian = resizeRadianHeight + svgHeight
+
+
+    var viewbox = "0 0 " + windowW + " " + windowH
+    var resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
+    var resizeNavCurve = resizeSvg.split("V")[0]
+
+    console.log("resizeSvg " + resizeSvg)
+
+    
+    
+    $(".svgBg").attr("d", resizeSvg);
+    $(".navPath").attr("d", resizeNavCurve);
+
+    $(".svgCurve").attr('viewBox', viewbox)
+    $(".svgCurveBg").attr('viewBox', viewbox)
+
+
+
+
+
+
+
+
 
 
     $(".clipImg").width(window.innerWidth)
+
+
+
+
+
+
+
+    var navHome = document.getElementById('navHome')
+    var navServer = document.getElementById('navServer')
+    var navWork = document.getElementById('navWork')
+    var navFlow = document.getElementById('navFlow')
+    var navTeam = document.getElementById('navTeam')
+
+
+
+
+    var menuItem = $(".menuItem")
+
+    var pathLength = Math.floor(navCurve.getTotalLength());
+
+    menuToCurve(pathLength)
+
+    function menuToCurve(pathLength) {
+        $(".menuItem").each(function(index,element){
+
+            var menuPos = (index + 3) * 10;
+
+            prcnt = (menuPos * pathLength) / 100;
+            pt = navCurve.getPointAtLength(prcnt);
+            pt.x = Math.round(pt.x);
+            pt.y = Math.round(pt.y);
+
+            $(this).css("webkitTransform",'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
+
+            console.log("index: " + index)
+            console.log("menuPos: " + menuPos)
+            console.log("element: " + $(".menuItem")[index])
+        })
+
+    }
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -38,7 +131,7 @@ $(document).ready(function() {
     var contactkey = 0.65;
 
 
-    var logopos = $(".galdCicle").offset().top
+    // var logopos = $(".galdCicle").offset().top
     $(".sliders").height(800);
 
 
@@ -59,13 +152,8 @@ $(document).ready(function() {
         repeatDelay: 0,
     });
 
-    // starttw.set('.clipImg', { x: window.innerWidth, scale: 1, opacity: 0.2 });
 
-    starttw.staggerTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: -window.innerWidth*2 }, 5);
-
-    // tl.fromTo(element, 1, {left:0}, {left:100});
-    // starttw.staggerFromTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: window.innerWidth },{ opacity: 1.2, x: -window.innerWidth*2 }, 5);
-
+    starttw.staggerTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: -windowW * 2 }, 5);
 
 
     var texttw = new TimelineMax({
@@ -74,21 +162,22 @@ $(document).ready(function() {
         repeatDelay: 0,
     });
 
-    texttw.set('.sliderText', { x: window.innerWidth, scale: 1, opacity: 0.2 });
+    texttw.set('.sliderText', { x: windowW, scale: 1, opacity: 0.2 });
 
-    texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), opacity: 1.2, x: -window.innerWidth*2 }, 5);
+    texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), opacity: 1.2, x: -windowW * 2 }, 5);
 
 
 
     function scrollEvent(scrollPos) {
 
-        var scrollRate = scrollPos / homeHeight;
+        var scrollRate = scrollPos / 1718;
         var homepos = Math.max(homekey - scrollRate, 0);
         var teamkpos = Math.max(teamkey - scrollRate / 2, 0);
         var workpos = Math.min(workkey + scrollRate / 2, 1);
         var contactpos = Math.min(contactkey + scrollRate, 1);
 
-        logopos = $(".galdCicle").offset().top + 30
+        // logopos = $(".galdCicle").offset().top + 30
+        logopos = 800
         $(".sliders").height(logopos);
 
 
@@ -110,39 +199,50 @@ $(document).ready(function() {
 
         if (scrollPos >= 0 && scrollPos < window.innerHeight) {
 
-            sliderScrollHeight = parseInt(svgBg.getAttribute("d").split(" ")[5]);
-            var svgHeight = parseInt(svgBg.getAttribute("d").split(" ")[2]); //479
+
+
+
             curveValue = svgScrollH - parseFloat(scrollPos * curveRate);
+
+
+
+            var svgBgD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
+            var svgnavD = svgBgD.split("V")[0]
+
+
 
 
             curveBg.setAttribute(
                 "d",
-                "M 0 " + svgHeight + " Q " + windowHS + " " + curveValue + " 1920 700 V 0 H 0 Z"
-            );
-            svgBg.setAttribute(
-                "d",
-                "M 0 " + svgHeight + " Q " + windowHS + " " + curveValue + " 1920 700 V 0 H 0 Z"
+                svgBgD
             );
 
 
             navCurve.setAttribute(
                 "d",
-                "M 0 " + svgHeight + " Q " + windowHS + " " + curveValue + " 1920 700"
+                svgnavD
             );
-            textCurve.setAttribute(
-                "d",
-                "M 0 " + 550 + " Q " + windowHS + " " + curveValue + " 1920 550"
-            );
+
+
+
+        
+    
+
+
+            pathLength = Math.floor(navCurve.getTotalLength());
+
+            menuToCurve(pathLength)
+
 
         }
     }
 
 
-    window.addEventListener("scroll", function(e) {
+    window.addEventListener("scroll", function (e) {
         last_known_scroll_position = window.scrollY;
 
         if (!ticking) {
-            window.requestAnimationFrame(function() {
+            window.requestAnimationFrame(function () {
                 scrollEvent(last_known_scroll_position);
                 ticking = false;
             });
@@ -213,15 +313,64 @@ $(document).ready(function() {
     }
 
 
+    var viewbox = "0 0 1920 1080"
 
-
-
-    window.addEventListener('resize', function(event) {
+    window.addEventListener('resize', function (event) {
 
         windowW = window.innerWidth;
-        windowHS = windowW / 2;
+        windowH = window.innerHeight;
 
-        // $(".clipImg").width(window.innerWidth)
+
+ 
+
+        svgHeight = 700
+        radianHeight = 300
+        resizeRadianHeight = radianHeight * (windowW / windowH / 2)
+        svgRadian = resizeRadianHeight + svgHeight
+    
+    
+        viewbox = "0 0 " + windowW + " " + windowH
+        resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
+        resizeNavCurve = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight
+    
+        
+        
+        
+        $(".svgBg").attr("d", resizeSvg);
+        $(".navPath").attr("d", resizeNavCurve);
+        
+        $(".svgCurve").attr('viewBox', viewbox)
+        $(".svgCurveBg").attr('viewBox', viewbox)
+        
+    
+        
+        
+        
+        var pathLength = Math.floor(navCurve.getTotalLength());
+        
+        console.log("pathLength: " + pathLength)
+    
+
+    
+
+
+        pathLength = Math.floor(navCurve.getTotalLength());
+
+        menuToCurve(pathLength)
+    
+    
+
+
+
+
+
+        $(".clipImg").width(windowW)
+
+
+        // d="M 0(A.x) 700(A.y) Q 960(ABhandle.X) 1000(ABhandle.y) 1920(BC.X) 700(B.y) V 0 H 0 Z"
+        // d="m 0,700 q 480,300 960,0 V 0 H 0 Z"
+        // M 0 493.5 Q 723.5 493.5300 1447 493.5 V 0 H 0 Z
+
 
     });
 

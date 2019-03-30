@@ -9,6 +9,22 @@
     src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), url('../font/iconfont.woff') format('woff'), url('../font/iconfont.ttf') format('truetype'), url('../font/iconfont.svg#iconfont') format('svg');
 }
 
+
+
+
+.navItem {
+    background: rgb(252, 3, 3);
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    position: absolute;
+    /* Align center */
+    top: -100px;
+    left: -50px;
+    opacity: 0.5;
+}
+
+
 .w80 {
     position: relative;
     width: 80%;
@@ -47,8 +63,16 @@
 
 }
 
+.menus {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background: rgb(28, 50, 54);
+    z-index: 1000;
+  }
 
-.titleMenus{
+
+/* .menuItem{
     position: absolute;
     width: 100%;
     height: 60px;
@@ -56,7 +80,29 @@
     color: #ccc;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.2);
-}
+} */
+
+
+.menuItem {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -150px;
+    left: -50px;
+    border-radius: 100px;
+    opacity: 1.0;
+    z-index: 100;
+    background: rgb(252, 3, 3);
+  }
+
+
+
+
+
+
+
+
+
 .titleMenus h1{
     line-height: 60px;
     font-size: 24px
@@ -138,26 +184,26 @@
 .svgBg {
     position: absolute;
     width: 100%;
-    height: 88vh;
+    height: 90vh;
 }
 
 .navSvg {
     position: absolute;
     width: 100%;
-    height: 88vh;
+    height: 90vh;
     z-index: 3;
 }
 
 .svgCurve {
     position: absolute;
     width: 100%;
-    height: 88vh;
+    height: 90vh;
 }
 
 .svgCurveBg {
     position: absolute;
     width: 100%;
-    height: 88vh;
+    height: 90vh;
     z-index: 1;
 }
 
@@ -169,7 +215,7 @@
     text-indent: 2em;
     color: #ccc;
     top: 0px;
-    background-color: purple;
+    background-color: rgb(3, 6, 14);
     z-index: -1;
     text-align: justify;
 }
@@ -202,6 +248,8 @@
     font-size: 138px;
     font-style: normal;
 }
+
+
 
 svg .navText {
     color: white;

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=svg header, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <svg class="svgCurveBg" width="100%" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice" version="1.1"
+        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+
+        <symbol id="bgPath">
+            <path id="curveBg" class="svgBg" d="M 0 700 Q 960 1000 1920 700 V 0 H 0 Z">
+            </path>
+        </symbol>
+
+        <use fill="rgb(3,3,8)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bgPath"></use>
+
+
+        <mask id="maskLink">
+            <use fill="white" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#bgPath"></use>
+        </mask>
+
+
+        <g mask="url(#maskLink)">
+            <image class="clipImg" xlink:href="img/Architecture.png" x="100%" y="0" width="100%" height="100%" />
+            <image class="clipImg" xlink:href="img/eyessvg.png" x="100%" y="0" width="100%" height="100%" />
+            <image class="clipImg" xlink:href="img/Skyscrapers.png" x="100%" y="0" width="100%" height="100%" />
+            <image class="clipImg" xlink:href="img/Lights.png" x="100%" y="0" width="100%" height="100%" />
+        </g>
+
+
+    </svg>
+</body>
+
+</html>
