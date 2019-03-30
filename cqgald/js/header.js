@@ -76,7 +76,7 @@ $(document).ready(function() {
 
     texttw.set('.sliderText', { x: window.innerWidth, scale: 1, opacity: 0.2 });
 
-    texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), opacity: 1.2, x: -window.innerWidth }, 5);
+    texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), opacity: 1.2, x: -window.innerWidth*2 }, 5);
 
 
 
