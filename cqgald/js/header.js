@@ -48,13 +48,13 @@ $(document).ready(function () {
         $(".clipImg").attr("width", "100%")
 
         // tween slider
-        var starttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
-        starttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.1, 1, false), attr: { x: -windowW } }, 5);
+        // var starttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
+        // starttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.1, 1, false), attr: { x: -windowW } }, 5);
 
 
-        var texttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
-        texttw.set('.sliderText', { x: windowW, scale: 1, opacity: 0.2 });
-        texttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.5, 1, false), attr: { x: -windowW } }, 5);
+        // var texttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
+        // texttw.set('.sliderText', { x: windowW, scale: 1, opacity: 0.2 });
+        // texttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.5, 1, false), attr: { x: -windowW } }, 5);
 
         // texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), attr: { x: -windowW } }, 5);
 
