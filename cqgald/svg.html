@@ -6,9 +6,62 @@
     <meta name="viewport" content="width=svg header, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .menuItem {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: -50px;
+            left: -50px;
+            border-radius: 100px;
+            opacity: 1.0;
+            z-index: 100;
+            background: #ef255f;
+        }
+
+        .menuHome {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            top: -60px;
+            left: -60px;
+            border-radius: 120px;
+            line-height: 120px;
+            opacity: 1.0;
+            z-index: 100;
+            background: rgb(252, 3, 3);
+        }
+
+        .menuHome {
+            offset-path: path('M 0 700 Q 960 1000 1920 700');
+            animation: followpath 4s linear 1;
+        }
+
+        @keyframes followpath {
+            to {
+                motion-offset: 100%;
+                offset-distance: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="menus">
+        <div class="menuItem menu1">服务</div>
+        <div class="menuItem menu2">项目</div>
+        <div class="menuItem menuHome"> GALD </div>
+        <div class="menuItem menu4">流程</div>
+        <div class="menuItem menu5">联系</div>
+    </div>
+
 
 
     <svg class="svgCurveBg" width="100%" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice" version="1.1"

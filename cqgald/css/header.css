@@ -76,34 +76,24 @@
   }
 
 
-/* .menuItem{
-    position: absolute;
-    width: 100%;
-    height: 60px;
-    text-align: center;
-    color: #ccc;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.2);
-} */
-
 
 .menuItem {
     position: absolute;
     width: 100px;
     height: 100px;
-    top: -150px;
+    top: -50px;
     left: -50px;
     border-radius: 100px;
     opacity: 1.0;
     z-index: 100;
-    background: rgb(252, 3, 3);
+    background: #ef255f;
   }
 
   .menuHome {
     position: absolute;
     width: 120px;
     height: 120px;
-    top: -150px;
+    top: -60px;
     left: -60px;
     border-radius: 120px;
     line-height: 120px;
@@ -201,7 +191,7 @@
 .svgBg {
     position: absolute;
     width: 100%;
-    height: 90vh;
+
 }
 
 
@@ -209,13 +199,13 @@
 .svgCurve {
     position: absolute;
     width: 100%;
-    height: 90vh;
+
 }
 
 .svgCurve {
     position: absolute;
     width: 100%;
-    height: 90vh;
+
     z-index: 1;
 }
 

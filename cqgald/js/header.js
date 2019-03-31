@@ -76,79 +76,65 @@ $(document).ready(function () {
 
 
 
-    var navHome = document.getElementById('navHome')
-    var navServer = document.getElementById('navServer')
-    var navWork = document.getElementById('navWork')
-    var navFlow = document.getElementById('navFlow')
-    var navTeam = document.getElementById('navTeam')
-
-
 
 
     var menuItem = $(".menuItem")
 
-    var pathLength = Math.floor(navCurve.getTotalLength());
+    var menuOffset = 0;
+    
+    
+    
+    
+    
+    function menuToCurve(offset) {
+        
+        var pathLength = navCurve.getTotalLength()
 
-    menuToCurve(pathLength)
+        $.each(menuItem, function(index,element){      
 
-    function menuToCurve(pathLength) {
-        $(".menuItem").each(function (index, element) {
 
-            var menuPos = (index + 3) * 10;
+            var offsetHalf = offset / 2
+            prcnt = index / 10 + 0.3
 
-            prcnt = (menuPos * pathLength) / 100;
-            pt = navCurve.getPointAtLength(prcnt);
-            pt.x = Math.round(pt.x);
-            pt.y = Math.round(pt.y);
+            if (index == 0) {
+                prcnt = prcnt - offset
+            }
 
+            if (index == 1) {
+                prcnt = prcnt - offsetHalf
+            }
+
+            if (index == 3) {
+                prcnt = prcnt + offsetHalf
+            }
+
+            if (index == 4) {
+                prcnt = prcnt + offset
+            }
+
+
+
+            console.log("prcnt: " + prcnt)
+
+            0.9178082191780821
+
+            var distance = prcnt * pathLength
+
+            pt = navCurve.getPointAtLength(distance);
+
+
+            console.log("pt.x" + index+ " "+pt.x)
+            console.log("pt.y" + index+ " "+pt.y)
+            
+            // pt.x = Math.round(pt.x);
+            // pt.y = Math.round(pt.y);
             $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
-
         })
-
+        
+       
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    var homekey = 0.35;
-    var teamkey = 0.42;
-    var workkey = 0.58;
-    var contactkey = 0.65;
-
-
-
-
-    
-
-
-    TweenMax.to(".navHome", 1, { attr: { keyPoints: homekey + ";" + homekey }, ease: Elastic.easeOut.config(0.6, 0.3), y: -500 });
-    TweenMax.to(".navTeam", 1, { attr: { keyPoints: teamkey + ";" + teamkey }, ease: Elastic.easeOut.config(0.6, 0.5), y: -500 });
-    TweenMax.to(".navWork", 1, { attr: { keyPoints: workkey + ";" + workkey }, ease: Elastic.easeOut.config(0.6, 0.5), y: -500 });
-    TweenMax.to(".navContact", 1, { attr: { keyPoints: contactkey + ";" + contactkey }, ease: Elastic.easeOut.config(0.6, 0.3), y: -500 });
-
+    menuToCurve(0)
 
 
 
@@ -157,26 +143,21 @@ $(document).ready(function () {
 
     function scrollEvent(scrollPos) {
 
-        var scrollRate = scrollPos / 1718;
-        var homepos = Math.max(homekey - scrollRate, 0);
-        var teamkpos = Math.max(teamkey - scrollRate / 2, 0);
-        var workpos = Math.min(workkey + scrollRate / 2, 1);
-        var contactpos = Math.min(contactkey + scrollRate, 1);
+
+        var menuOffsetScroll = Math.min(menuOffset + scrollPos/windowW, 0.3)
+
+
+        
+
+        menuToCurve(menuOffsetScroll)
+        
+
 
         // logopos = $(".galdCicle").offset().top + 30
         logopos = 380
-
-
         var minPos = Math.min(logopos, scrollPos);
         TweenMax.to($(".headerImg"), 1, { y: minPos });
 
-
-
-
-        $(".navHome").attr("keyPoints", homepos + ";" + homepos);
-        $(".navTeam").attr("keyPoints", teamkpos + ";" + teamkpos);
-        $(".navWork").attr("keyPoints", workpos + ";" + workpos);
-        $(".navContact").attr("keyPoints", contactpos + ";" + contactpos);
 
 
 
@@ -192,7 +173,7 @@ $(document).ready(function () {
 
 
             var svgBgD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
-            var svgnavD = svgBgD.split("V")[0]
+            var svgnavD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight
 
 
 
@@ -206,9 +187,7 @@ $(document).ready(function () {
 
 
 
-            pathLength = Math.floor(navCurve.getTotalLength());
 
-            menuToCurve(pathLength)
 
 
         }
@@ -271,6 +250,8 @@ $(document).ready(function () {
         windowH = window.innerHeight;
         viewbox(windowW, windowH)
 
+        menuToCurve(0)
+
 
 
 
@@ -284,7 +265,6 @@ $(document).ready(function () {
 
         pathLength = Math.floor(navCurve.getTotalLength());
 
-        menuToCurve(pathLength)
 
 
 
