@@ -35,17 +35,17 @@
         <div class="svgHeader">
 
                 <div class="menus">
-                    <div class="menuItem menu1"></div>
-                    <div class="menuItem menu2"></div>
-                    <div class="menuItem menu3"></div>
-                    <div class="menuItem menu4"></div>
-                    <div class="menuItem menu5"></div>
+                    <div class="menuItem menu1">服务</div>
+                    <div class="menuItem menu2">项目</div>
+                    <div class="menuItem menuHome"> GALD </div>
+                    <div class="menuItem menu4">流程</div>
+                    <div class="menuItem menu5">联系</div>
                 </div>
 
 
 
 
-            <svg class="svgCurveBg" width="100%" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice"
+            <svg id="svgCurve" class="svgCurve" width="100%" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice"
                 version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
 
@@ -63,12 +63,44 @@
 
 
                 <g mask="url(#maskLink)">
-                    <image class="clipImg" xlink:href="img/Architecture.png" x="100%" y="0" width="100%"
-                        height="100%" />
-                    <image class="clipImg" xlink:href="img/eyessvg.png" x="100%" y="0" width="100%" height="100%" />
-                    <image class="clipImg" xlink:href="img/Skyscrapers.png" x="100%" y="0" width="100%" height="100%" />
-                    <image class="clipImg" xlink:href="img/Lights.png" x="100%" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/Architecture.png" x="0" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/eyessvg.png" x="0" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/Skyscrapers.png" x="0" y="0" width="100%" height="100%" />
+                    <image class="clipImg" xlink:href="img/Lights.png" x="0" y="0" width="100%" height="100%" />
                 </g>
+
+
+
+
+
+                <path id="navCurve" class="navPath" stroke="red" fill="none" stroke-width="3" d="M 0 700 Q 960 1000 1920 700">
+                </path>
+
+
+
+
+                <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                    我们为每一盏灯精确配光，满足您对灯光的极致体验
+                </text>
+                <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                    融合智能照明控制，呈现美轮美奂的效果
+                </text>
+                <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                    优秀建筑照明设计，是为了我们的天空更美妙
+                </text>
+                <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
+                    国际灯光节作品，也许可以代表我们的行业水平
+                </text>
+
+
+
+
+                <!-- <text x='0' y=500 font-size="38">
+                    <textPath class="galdText" xlink:href="#navCurve" startOffset="50%" text-anchor="middle"
+                        fill='white'>
+                        光 爱 照 明 设 计
+                    </textPath>
+                </text> -->
 
 
             </svg>
@@ -76,120 +108,6 @@
 
 
 
-            <div class="navSvg">
-                <svg class="svgCurve" viewbox="0 0 1920 987" preserveAspectRatio="xMidYMax slice" version="1.1"
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-
-
-
-                    <path id="navCurve" class="navPath" stroke="red" fill="none" stroke-width="3"
-                        d="M 0 700 Q 960 1000 1920 700">
-                    </path>
-
-<!-- 
-                    <g class='navIcons'>
-
-                        <a href="#galdhome">
-                            <g class='navIcon navHomeGroup'>
-                                <circle class="navItem" cx="0" cy="0" r="45" fill="red"></circle>
-                                <text x='0' y='0' text-anchor="middle" class="icon iconfont">&#xe73b;</text>
-                                <text x='0' y='20' text-anchor="middle" class="icon navText">首 页</text>
-                                <animateMotion class='navHome' rotate="auto" keyPoints="0.5;0.5" begin="0s"
-                                    keyTimes="0;1" calcMode="linear" dur="0.1s" fill="freeze" repeatCount="indefinite">
-                                    <mpath xlink:href="#navCurve"></mpath>
-                                </animateMotion>
-                            </g>
-                        </a>
-
-                        <a href="#galdteam">
-                            <g class='navIcon navTeamGroup'>
-                                <circle class="navItem" cx="0" cy="0" r="45" fill="red"></circle>
-                                <text x='0' y='0' text-anchor="middle" class="icon iconfont workIcon">&#xe658;</text>
-                                <text x='0' y='20' text-anchor="middle" class="icon navText">团 队</text>
-                                <animateMotion class='navTeam' rotate="auto" keyPoints="0.5;0.5" begin="0s"
-                                    keyTimes="0;1" calcMode="linear" dur="0.1s" fill="freeze" repeatCount="indefinite">
-                                    <mpath xlink:href="#navCurve"></mpath>
-                                </animateMotion>
-                            </g>
-                        </a>
-
-
-
-                        <a href="#galdwork">
-                            <g class='navIcon navWorkGroup'>
-                                <circle class="navItem" cx="0" cy="0" r="45" fill="red"></circle>
-                                <text x='0' y='0' text-anchor="middle" class="icon iconfont">&#xedac;</text>
-                                <text x='0' y='20' text-anchor="middle" class="icon navText">项 目</text>
-                                <animateMotion class='navWork' rotate="auto" keyPoints="0.5;0.5" begin="0s"
-                                    keyTimes="0;1" calcMode="linear" dur="0.1s" fill="freeze" repeatCount="indefinite">
-                                    <mpath xlink:href="#navCurve"></mpath>
-                                </animateMotion>
-                            </g>
-                        </a>
-
-
-                        <a href="#galdcontact">
-                            <g class='navIcon navContactGroup'>
-                                <circle class="navItem" cx="0" cy="0" r="45" fill="red"></circle>
-                                <text x='0' y='0' text-anchor="middle" class="icon iconfont">&#xe63f;</text>
-                                <text x='0' y='20' text-anchor="middle" class="icon navText">联 系</text>
-                                <animateMotion class='navContact' rotate="auto" keyPoints="0.5;0.5" begin="0s"
-                                    keyTimes="0;1" calcMode="linear" dur="0.1s" fill="freeze" repeatCount="indefinite">
-                                    <mpath xlink:href="#navCurve"></mpath>
-                                </animateMotion>
-                            </g>
-                        </a>
-
-
-
-
-                        <a href="#galdhome">
-                            <g class='galdLogo' id="galdLogo">
-                                <circle class="navItem galdCicle" cx="0" cy="0" r="60" fill="red"></circle>
-
-                                <text x='0' y='50' text-anchor="middle" class="icon iconfont iconLogo">&#xe601;</text>
-                                <animateMotion id='navLogo' rotate="auto" keyPoints="0.5;0.5" begin="0s" keyTimes="0;1"
-                                    calcMode="linear" dur="0.1s" fill="freeze" repeatCount="indefinite">
-                                    <mpath xlink:href="#navCurve"></mpath>
-                                </animateMotion>
-                            </g>
-                        </a>
-
-                    </g> -->
-
-
-
-
-
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
-                        我们为每一盏灯精确配光，满足您对灯光的极致体验
-                    </text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
-                        融合智能照明控制，呈现美轮美奂的效果
-                    </text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
-                        优秀建筑照明设计，是为了我们的天空更美妙
-                    </text>
-                    <text class="sliderText" font-size="24" x="100%" y="200" fill="#ccc" text-anchor="middle">
-                        国际灯光节作品，也许可以代表我们的行业水平
-                    </text>
-
-
-                    <!-- <text x='0' y=500 font-size="38">
-                        <textPath class="galdText" xlink:href="#navCurve" startOffset="50%" text-anchor="middle"
-                            fill='white'>
-                            光 爱 照 明 设 计
-                        </textPath>
-                    </text> -->
-
-
-
-
-
-
-                </svg>
-            </div>
 
         </div>
 

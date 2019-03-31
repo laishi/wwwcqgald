@@ -1,9 +1,8 @@
 $(document).ready(function () {
 
-    var svgBox = document.getElementById("svgBox");
     var curveBg = document.getElementById("curveBg");
-    var svgBg = document.getElementById("svgBg");
     var navCurve = document.getElementById("navCurve");
+    var svgCurve = document.getElementById("svgCurve");
 
 
     var last_known_scroll_position = 0;
@@ -11,10 +10,8 @@ $(document).ready(function () {
     var ticking = false;
     var curveValue;
     var rate = 1.8;
-    var sliderScrollHeight;
 
-    var svgScrollH = parseInt(curveBg.getAttribute("d").split(" ")[5]);
-    var fixHeaderHeight = 150;
+
     var windowW = window.innerWidth;
     var windowH = window.innerHeight;
     var windowHS = windowW / 2;
@@ -23,38 +20,55 @@ $(document).ready(function () {
 
 
 
+    // INIT VIEWBOX SVG
 
-    // var svgHeight = windowH / 1.2
-    var svgHeight = 700
+    var svgHeight = parseInt(curveBg.getAttribute("d").split(" ")[2]);
     var radianHeight = 300
     var resizeRadianHeight = radianHeight * (windowW / windowH / 2)
     var svgRadian = resizeRadianHeight + svgHeight
 
+    var viewbox = function (windowW, windowH) {
 
-    var viewbox = "0 0 " + windowW + " " + windowH
-    var resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
-    var resizeNavCurve = resizeSvg.split("V")[0]
+        svgHeight = parseInt(curveBg.getAttribute("d").split(" ")[2]);
+        radianHeight = 300
+        resizeRadianHeight = radianHeight * (windowW / windowH / 2)
+        svgRadian = resizeRadianHeight + svgHeight
 
-    console.log("resizeSvg " + resizeSvg)
+        var viewboxSize = "0 0 " + windowW + " " + windowH
+        var resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
 
-    
-    
-    $(".svgBg").attr("d", resizeSvg);
-    $(".navPath").attr("d", resizeNavCurve);
+        var resizeNavCurve = resizeSvg.split("V")[0]
 
-    $(".svgCurve").attr('viewBox', viewbox)
-    $(".svgCurveBg").attr('viewBox', viewbox)
+        svgCurve.setAttribute('viewBox', viewboxSize)
+        curveBg.setAttribute("d", resizeSvg);
+        navCurve.setAttribute("d", resizeNavCurve);
 
+        console.log("windowW: " + windowW)
 
+        $(".clipImg").attr("width", "100%")
 
-
-
-
-
-
+        // tween slider
+        var starttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
+        starttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.1, 1, false), attr: { x: -windowW } }, 5);
 
 
-    $(".clipImg").width(window.innerWidth)
+        var texttw = new TimelineMax({ repeat: -1, yoyo: true, repeatDelay: 0, });
+        texttw.set('.sliderText', { x: windowW, scale: 1, opacity: 0.2 });
+        texttw.staggerFromTo('.clipImg', 5, { attr: { x: windowW } },{ ease: SlowMo.ease.config(0.5, 1, false), attr: { x: -windowW } }, 5);
+
+        // texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), attr: { x: -windowW } }, 5);
+
+    }
+
+
+    viewbox(windowW, windowH)
+
+
+    $(".headerText").css("marginTop", 500)
+
+
+    // INIT CLIPIMAGE
+
 
 
 
@@ -78,7 +92,7 @@ $(document).ready(function () {
     menuToCurve(pathLength)
 
     function menuToCurve(pathLength) {
-        $(".menuItem").each(function(index,element){
+        $(".menuItem").each(function (index, element) {
 
             var menuPos = (index + 3) * 10;
 
@@ -87,26 +101,12 @@ $(document).ready(function () {
             pt.x = Math.round(pt.x);
             pt.y = Math.round(pt.y);
 
-            $(this).css("webkitTransform",'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
+            $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
 
-            console.log("index: " + index)
-            console.log("menuPos: " + menuPos)
-            console.log("element: " + $(".menuItem")[index])
         })
 
     }
 
-    
-
-
-
-
-
-
-
-
-
-    
 
 
 
@@ -120,10 +120,18 @@ $(document).ready(function () {
 
 
 
-    // var homekey = $(".navHome").attr("keyPoints").split(";")[0] - 0.0;
-    // var teamkey = $(".navTeam").attr("keyPoints").split(";")[0] - 0.0;
-    // var workkey = $(".navWork").attr("keyPoints").split(";")[0] - 0.0;
-    // var contactkey = $(".navContact").attr("keyPoints").split(";")[0] - 0.0;
+
+
+
+
+
+
+
+
+
+
+
+
 
     var homekey = 0.35;
     var teamkey = 0.42;
@@ -131,11 +139,9 @@ $(document).ready(function () {
     var contactkey = 0.65;
 
 
-    // var logopos = $(".galdCicle").offset().top
-    $(".sliders").height(800);
 
 
-    $(".headerText").css("marginTop", $(".svgCurve").height() - $(".headerImg").height())
+    
 
 
     TweenMax.to(".navHome", 1, { attr: { keyPoints: homekey + ";" + homekey }, ease: Elastic.easeOut.config(0.6, 0.3), y: -500 });
@@ -145,26 +151,7 @@ $(document).ready(function () {
 
 
 
-    // tween slider
-    var starttw = new TimelineMax({
-        repeat: -1,
-        yoyo: true,
-        repeatDelay: 0,
-    });
 
-
-    starttw.staggerTo('.clipImg', 5, { ease: SlowMo.ease.config(0.1, 1, false), opacity: 1.2, x: -windowW * 2 }, 5);
-
-
-    var texttw = new TimelineMax({
-        repeat: -1,
-        yoyo: true,
-        repeatDelay: 0,
-    });
-
-    texttw.set('.sliderText', { x: windowW, scale: 1, opacity: 0.2 });
-
-    texttw.staggerTo('.sliderText', 5, { ease: SlowMo.ease.config(0.5, 1, false), opacity: 1.2, x: -windowW * 2 }, 5);
 
 
 
@@ -177,14 +164,12 @@ $(document).ready(function () {
         var contactpos = Math.min(contactkey + scrollRate, 1);
 
         // logopos = $(".galdCicle").offset().top + 30
-        logopos = 800
-        $(".sliders").height(logopos);
+        logopos = 380
 
 
         var minPos = Math.min(logopos, scrollPos);
-        TweenMax.to($(".headerImg"), 1, { top: minPos });
+        TweenMax.to($(".headerImg"), 1, { y: minPos });
 
-        console.log(minPos)
 
 
 
@@ -202,7 +187,7 @@ $(document).ready(function () {
 
 
 
-            curveValue = svgScrollH - parseFloat(scrollPos * curveRate);
+            curveValue = svgRadian - parseFloat(scrollPos * curveRate);
 
 
 
@@ -212,21 +197,13 @@ $(document).ready(function () {
 
 
 
-            curveBg.setAttribute(
-                "d",
-                svgBgD
-            );
-
-
-            navCurve.setAttribute(
-                "d",
-                svgnavD
-            );
+            curveBg.setAttribute("d", svgBgD);
+            navCurve.setAttribute("d", svgnavD);
 
 
 
-        
-    
+
+
 
 
             pathLength = Math.floor(navCurve.getTotalLength());
@@ -255,44 +232,6 @@ $(document).ready(function () {
 
 
 
-    // icon hover
-
-    $('.navHomeGroup').hover(navHomeGroupIn, showGald);
-
-    function navHomeGroupIn() {
-        console.log($('this'));
-        console.log($('.galdText')[0].innerHTML = '回 到 首 页')
-
-    }
-
-    $('.navTeamGroup').hover(navTeamGroupIn, showGald);
-
-    function navTeamGroupIn() {
-        console.log($('.galdText')[0].innerHTML = '优秀的团队 确保您的设计出彩')
-
-    }
-
-    $('.navWorkGroup').hover(navWorkGroupIn, showGald);
-
-    function navWorkGroupIn() {
-        console.log($('.galdText')[0].innerHTML = '工作案例展示')
-
-    }
-
-    $('.navContactGroup').hover(navContactGroupIn, showGald);
-
-    function navContactGroupIn() {
-        console.log($('.galdText')[0].innerHTML = 'Phone: 13640566324  Email:504677424@qq.com')
-
-    }
-
-
-    function showGald() {
-        console.log($('.galdText')[0].innerHTML = ' 光 爱 照 明 设 计')
-    }
-
-
-
 
 
     // $('.galdLogo').hover(handlerIn, handlerOut);
@@ -313,58 +252,46 @@ $(document).ready(function () {
     }
 
 
-    var viewbox = "0 0 1920 1080"
+
+
+
+
+
+
+
+
+
+
+
 
     window.addEventListener('resize', function (event) {
 
+        //RESIZE VIEWBOX
         windowW = window.innerWidth;
         windowH = window.innerHeight;
+        viewbox(windowW, windowH)
 
 
- 
 
-        svgHeight = 700
-        radianHeight = 300
-        resizeRadianHeight = radianHeight * (windowW / windowH / 2)
-        svgRadian = resizeRadianHeight + svgHeight
-    
-    
-        viewbox = "0 0 " + windowW + " " + windowH
-        resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
-        resizeNavCurve = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight
-    
-        
-        
-        
-        $(".svgBg").attr("d", resizeSvg);
-        $(".navPath").attr("d", resizeNavCurve);
-        
-        $(".svgCurve").attr('viewBox', viewbox)
-        $(".svgCurveBg").attr('viewBox', viewbox)
-        
-    
-        
-        
-        
+
+
         var pathLength = Math.floor(navCurve.getTotalLength());
-        
-        console.log("pathLength: " + pathLength)
-    
 
-    
+
+
+
 
 
         pathLength = Math.floor(navCurve.getTotalLength());
 
         menuToCurve(pathLength)
-    
-    
 
 
 
 
 
-        $(".clipImg").width(windowW)
+
+
 
 
         // d="M 0(A.x) 700(A.y) Q 960(ABhandle.X) 1000(ABhandle.y) 1920(BC.X) 700(B.y) V 0 H 0 Z"
@@ -373,5 +300,16 @@ $(document).ready(function () {
 
 
     });
+
+
+
+
+
+
+
+
+
+
+
 
 })
