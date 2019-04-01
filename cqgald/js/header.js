@@ -1,6 +1,9 @@
 
 var eventDirectX = window.innerWidth / 2;
 var eventDirectY = window.innerHeight / 2;
+
+
+
 window.addEventListener('mousemove', function (e) {
 
     var clipImage = document.querySelectorAll(".clipImg")
@@ -229,8 +232,29 @@ $(document).ready(function () {
 
 
 
-
+    var scrollDriction = 0    
     function scrollEvent(scrollPos) {
+        
+        var sp = 0
+
+        if (scrollPos > scrollDriction) {
+            sp = scrollPos - scrollDriction
+        } else {
+            sp = scrollPos - scrollDriction
+        }
+
+        scrollDriction = scrollPos
+        var headerImageY = 0
+        $.each($(".clipImg"), function (index, item) {
+            headerImageY = parseFloat($(this).attr("y"))
+            $(this).attr("y",  headerImageY + sp*1.5);
+        })
+
+
+
+
+
+
 
         var menuOffsetScroll = Math.min(menuOffset + scrollPos / windowW, 0.3)
 
