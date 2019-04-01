@@ -1,3 +1,50 @@
+
+var eventDirectX = window.innerWidth / 2;
+var eventDirectY = window.innerHeight / 2;
+window.addEventListener('mousemove', function (e) {
+
+    var clipImage = document.querySelectorAll(".clipImg")
+
+    var imgPosX = 0
+    var imgPosY = 0
+
+    if (e.x > eventDirectX) {
+        imgPosX = e.x - eventDirectX
+    } else {
+        imgPosX = e.x - eventDirectX
+    }
+
+    if (e.y < eventDirectY) {
+        imgPosY = e.y - eventDirectY
+    } else {
+        imgPosY = e.y - eventDirectY
+    }
+
+    eventDirectX = e.x;
+    eventDirectY = e.y;
+
+    clipImage.forEach(function (ele, index) {
+
+        imgPoseachX = imgPosX * 10 * ((index - 3) / 100);
+        imgPoseachY = imgPosY * 2 * ((index - 3) / 100);
+
+        var sourceX = parseFloat(ele.getAttribute("x"))
+        var sourceY = parseFloat(ele.getAttribute("y"))
+
+        ele.setAttribute("x", sourceX + imgPoseachX);
+        ele.setAttribute("y", sourceY + imgPoseachY);
+
+    })
+
+});
+
+
+
+
+
+
+
+
 $(document).ready(function () {
 
     var curveBg = document.getElementById("curveBg");
@@ -43,7 +90,6 @@ $(document).ready(function () {
         curveBg.setAttribute("d", resizeSvg);
         navCurve.setAttribute("d", resizeNavCurve);
 
-        console.log("windowW: " + windowW)
 
         $(".clipImg").attr("width", "100%")
 
@@ -67,34 +113,92 @@ $(document).ready(function () {
     $(".headerText").css("marginTop", 500)
 
 
+
+
+
+
+
+
+
+
+
     // INIT CLIPIMAGE
-
-
-
-
-
-
-
 
 
 
     var menuItem = $(".menuItem")
 
+
+
+    $(".menu1").click(function () {
+        $('#galdserver').ScrollTo({
+            duration: 1000,
+            easing: 'linear'
+        });
+    })
+
+    $(".menu2").click(function () {
+        $('#galdwork').ScrollTo({
+            duration: 1000,
+            easing: 'linear'
+        });
+    })
+
+    $(".menu1").click(function () {
+        $('#galdserver').ScrollTo({
+            duration: 1000,
+            easing: 'linear'
+        });
+    })
+
+    $(".menu4").click(function () {
+        $('#galdworkflow').ScrollTo({
+            duration: 1000,
+            easing: 'linear'
+        });
+    })
+
+    $(".menu5").click(function () {
+        $('#galdcontact').ScrollTo({
+            duration: 1000,
+            easing: 'linear'
+        });
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
     var menuOffset = 0;
-    
-    
-    
-    
-    
-    function menuToCurve(offset) {
-        
+
+
+
+
+    menuToCurve(0, 0.3)
+    function menuToCurve(offset, pos) {
         var pathLength = navCurve.getTotalLength()
-
-        $.each(menuItem, function(index,element){      
-
-
+        $.each(menuItem, function (index, element) {
+            prcnt = index / 10 + pos
             var offsetHalf = offset / 2
-            prcnt = index / 10 + 0.3
+
+            // var menuItemLength = Math.floor($(".menuItem").length/2)
+
+            // if (index < menuItemLength) {
+            // prcnt = prcnt - (offset / menuItemLength)
+            // }
+
+            // if (index > Math.floor($(".menuItem").length/2)) {
+            // prcnt = prcnt + (offset / menuItemLength)
+            // }
+
 
             if (index == 0) {
                 prcnt = prcnt - offset
@@ -112,45 +216,25 @@ $(document).ready(function () {
                 prcnt = prcnt + offset
             }
 
-
-
-            console.log("prcnt: " + prcnt)
-
-            0.9178082191780821
-
             var distance = prcnt * pathLength
-
             pt = navCurve.getPointAtLength(distance);
-
-
-            console.log("pt.x" + index+ " "+pt.x)
-            console.log("pt.y" + index+ " "+pt.y)
-            
-            // pt.x = Math.round(pt.x);
-            // pt.y = Math.round(pt.y);
             $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
+
+            menuItem.css("opacity", 1)
+
+            // transform: translate3d(300px, 0, 0) rotateY(-15deg) rotateX(-15deg) rotateZ(-15deg);
+            // $(this).css("webkitTransform", 'rotate(90deg');
         })
-        
-       
     }
-
-    menuToCurve(0)
-
-
 
 
 
 
     function scrollEvent(scrollPos) {
 
+        var menuOffsetScroll = Math.min(menuOffset + scrollPos / windowW, 0.3)
 
-        var menuOffsetScroll = Math.min(menuOffset + scrollPos/windowW, 0.3)
-
-
-        
-
-        menuToCurve(menuOffsetScroll)
-        
+        menuToCurve(menuOffsetScroll, 0.3)
 
 
         // logopos = $(".galdCicle").offset().top + 30
@@ -159,36 +243,15 @@ $(document).ready(function () {
         TweenMax.to($(".headerImg"), 1, { y: minPos });
 
 
-
-
-
-
         if (scrollPos >= 0 && scrollPos < window.innerHeight) {
 
-
-
-
             curveValue = svgRadian - parseFloat(scrollPos * curveRate);
-
-
 
             var svgBgD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
             var svgnavD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight
 
-
-
-
             curveBg.setAttribute("d", svgBgD);
             navCurve.setAttribute("d", svgnavD);
-
-
-
-
-
-
-
-
-
 
         }
     }
@@ -206,10 +269,6 @@ $(document).ready(function () {
 
         ticking = true;
     });
-
-
-
-
 
 
 
@@ -232,47 +291,16 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     window.addEventListener('resize', function (event) {
 
         //RESIZE VIEWBOX
         windowW = window.innerWidth;
         windowH = window.innerHeight;
         viewbox(windowW, windowH)
-
-        menuToCurve(0)
-
-
-
-
+        menuToCurve(0, 0.3)
 
         var pathLength = Math.floor(navCurve.getTotalLength());
-
-
-
-
-
-
         pathLength = Math.floor(navCurve.getTotalLength());
-
-
-
-
-
-
-
-
-
 
         // d="M 0(A.x) 700(A.y) Q 960(ABhandle.X) 1000(ABhandle.y) 1920(BC.X) 700(B.y) V 0 H 0 Z"
         // d="m 0,700 q 480,300 960,0 V 0 H 0 Z"
@@ -280,16 +308,5 @@ $(document).ready(function () {
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
 
 })
