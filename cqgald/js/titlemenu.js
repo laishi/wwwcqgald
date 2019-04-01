@@ -1,45 +1,112 @@
+var titleItem = ""
+
+// var po = document.createElement('script')
+
+var pages = document.querySelectorAll(".page")
+
+
+
+var titleDatas = [ "服务领域", "设计项目", "设计流程", "设计团队", "联系我们" ]
+
+pages.forEach(function (ele, index, arr) {
+
+    if (index > 0) {
+        var titleMenus = document.createElement("div")
+        titleMenus.className = "titleMenus"
+        ele.prepend(titleMenus)
+
+        var titleItems = document.createElement("div")
+        titleItems.className = "titleItems"
+        titleMenus.append(titleItems)
+
+
+        // CREAT DATA
+        titleDatas.forEach(function (titleData, index, arr) {
+
+            var titleItem = document.createElement("div")
+            titleItem.className = "titleItem"
+            titleItems.append(titleItem)
+
+            var titleItemH1 = document.createElement("h1")
+            titleItemH1.className = "titleItemH1"
+            titleItemH1.innerHTML = titleData
+            titleItem.append(titleItemH1)
+
+            titleItem.addEventListener("click", function () {
+                console.log(titleData)
+    
+            }, false);
+    
+        })
+
+    }
+
+})
+
+
+
+
+
+
+
 $(document).ready(function () {
 
+    // var titleItem = ""
+
+    // $(".page").not(".galdhome").each(function (index) {
+
+    //     var ci = $(this).children().children().length
+    //     console.log("children: " + ci)
 
 
-
-
-    var titleItem = ""
-
-
-    $(".page").not(".galdhome").each(function () {
-
-        var menuItem = $(this).data("section-name")
-
-        
-        titleItem +=
-        "<div class='titleItem'>" +
-        "<h1>" + menuItem + "</h1>" +
-        "</div>"
-        
-        
-    });
+    //     $(".titleItem")[0].click(function () {
+    //         console.log("one")
+    //         $('#galdserver').ScrollTo({
+    //             duration: 1000,
+    //             easing: 'linear'
+    //         });
+    //     })
     
-    var titleItems = "<div class='titleItems'>" + titleItem + "</div>"
+    //     $(".titleItem")[2].click(function () {
+    //         $('#galdwork').ScrollTo({
+    //             duration: 1000,
+    //             easing: 'linear'
+    //         });
+    //     })
     
-    var titleMenus = "<div class='titleMenus'>" + titleItems + "</div>"
     
-    $(".page").not(".galdhome").prepend(titleMenus)
+    
+    //     $(".titleItem")[3].click(function () {
+    //         $('#galdworkflow').ScrollTo({
+    //             duration: 1000,
+    //             easing: 'linear'
+    //         });
+    //     })
+    
+    
+    //     $(".titleItem")[4].click(function () {
+    //         $('#galdteam').ScrollTo({
+    //             duration: 1000,
+    //             easing: 'linear'
+    //         });
+    //     })
+    
+    
+    
+    //     $(".titleItem")[5].click(function () {
+    //         $('#galdcontact').ScrollTo({
+    //             duration: 1000,
+    //             easing: 'linear'
+    //         });
+    //     })
     
 
-    
-
-
-
-
-
-
+    // });
 
 
 
 
     var n = $(".page").not(".galdhome").length; // Div count
-
 
     var OW = 30; // Div over width
     TweenMax.set($(".titleItem"), { width: 100 / n + '%' });
@@ -54,14 +121,6 @@ $(document).ready(function () {
     /*
     a Pen by DIACO : twitter.com/Diaco_ml  ||  codepen.io/MAW
     */
-
-
-
-
-
-
-
-
 
 
 })

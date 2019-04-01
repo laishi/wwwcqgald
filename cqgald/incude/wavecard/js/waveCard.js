@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     var cardHeight = $(".waveCard").height();
-    var waveContTop = $(".waveCont").css("top");
+    // var waveContTop = $(".waveCont").css("top");
 
     TweenMax.to($(".waveCont"), 10, { top: cardHeight / 3, ease: Elastic.easeOut.config(1.3, 0.3) });
 

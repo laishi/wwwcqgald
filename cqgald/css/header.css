@@ -113,16 +113,17 @@ filter: url(#goo-filter);
     
     
     
-    
     .titleMenus h1{
     line-height: 60px;
     font-size: 24px
     }
+
     .titleItems{
     position: relative;
     width: 80%;
     height: 60px;
     margin: 0 auto;
+    /* background-color: #f00; */
     }
     
     .titleItem{
@@ -130,7 +131,7 @@ filter: url(#goo-filter);
     width: 20%;
     float: left;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.1); */
     }
     
     .titleItem h1{
@@ -184,7 +185,7 @@ filter: url(#goo-filter);
     text-indent: 2em;
     margin-top: 600px;
     font-size: 18px;
-    line-height: 36px;
+    line-height: 38px;
     }
     
     .headerImg img {
@@ -401,12 +402,14 @@ filter: url(#goo-filter);
     
     .ripple {
     
-    transition: background 0.5s ease;
+        transition: background 0.5s ease;
     }
+
+    
     .ripple:before {
     display: block;
     content: '';
-    border: 8px solid blue;
+    border: 8px solid #2e54aa;
     position: absolute;
     top: 0;
     left: 0;
@@ -419,7 +422,7 @@ filter: url(#goo-filter);
     opacity: 0;
     }
     .ripple:hover {
-    background: green;
+    background: #4776e6;
     }
     .ripple:hover:before {
     -webkit-animation-name: ripple-out;

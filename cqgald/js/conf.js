@@ -47,9 +47,6 @@ $(function () {
                 curentPageTitle = pageTitle[i - 1]
                 TweenMax.to(curentPageTitle, 0.3, { scale: 1 });
 
-                pageTitle.click(function (index, item) {
-                    console.log($(this).scrollTop())
-                })
 
 
                 $(".titleMenus").hover(over, out);

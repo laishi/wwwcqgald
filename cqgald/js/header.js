@@ -238,7 +238,7 @@ $(document).ready(function () {
 
 
         // logopos = $(".galdCicle").offset().top + 30
-        logopos = 380
+        logopos = 450
         var minPos = Math.min(logopos, scrollPos);
         TweenMax.to($(".headerImg"), 1, { y: minPos });
 
