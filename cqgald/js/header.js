@@ -253,9 +253,6 @@ $(document).ready(function () {
 
 
 
-
-
-
         var menuOffsetScroll = Math.min(menuOffset + scrollPos / windowW, 0.3)
 
         menuToCurve(menuOffsetScroll, 0.3)
