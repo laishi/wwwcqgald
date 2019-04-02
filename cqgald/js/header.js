@@ -1,16 +1,5 @@
 
 
-
-
-
-$(".menuItem").css("background-color", "hsla(" + Math.floor(Math.random() * (180)) + ", 35%, 55%, 1)");
-$(".navPath").attr("stroke", "hsla(" + Math.floor(Math.random() * (180)) + ", 35%, 55%, 1)");
-
-
-
-
-
-
 var eventDirectX = window.innerWidth / 2;
 var eventDirectY = window.innerHeight / 2;
 
@@ -98,7 +87,7 @@ $(document).ready(function () {
         var resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
 
         var resizeNavCurve = resizeSvg.split("V")[0]
-
+        
         svgCurve.setAttribute('viewBox', viewboxSize)
         curveBg.setAttribute("d", resizeSvg);
         navCurve.setAttribute("d", resizeNavCurve);
@@ -119,8 +108,12 @@ $(document).ready(function () {
 
     }
 
-
     viewbox(windowW, windowH)
+
+    // TweenMax.from(curveBg, 0.5, {attr("d": "M 0 " + svgHeight + " Q " + windowW / 2 + " 0 " + windowW + " " + svgHeight + " V 0 H 0 Z")}) 
+
+    
+
 
 
     $(".headerText").css("marginTop", 500)
@@ -130,18 +123,9 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
     // INIT CLIPIMAGE
 
-
-
     var menuItem = $(".menuItem")
-
-
 
     $(".menu1").click(function () {
         $('#galdserver').ScrollTo({
@@ -186,14 +170,7 @@ $(document).ready(function () {
 
 
 
-
-
-
-
     var menuOffset = 0;
-
-
-
 
     menuToCurve(0, 0.3)
     function menuToCurve(offset, pos) {
@@ -201,16 +178,6 @@ $(document).ready(function () {
         $.each(menuItem, function (index, element) {
             prcnt = index / 10 + pos
             var offsetHalf = offset / 2
-
-            // var menuItemLength = Math.floor($(".menuItem").length/2)
-
-            // if (index < menuItemLength) {
-            // prcnt = prcnt - (offset / menuItemLength)
-            // }
-
-            // if (index > Math.floor($(".menuItem").length/2)) {
-            // prcnt = prcnt + (offset / menuItemLength)
-            // }
 
 
             if (index == 0) {
@@ -231,16 +198,22 @@ $(document).ready(function () {
 
             var distance = prcnt * pathLength
             pt = navCurve.getPointAtLength(distance);
-            $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)');
 
-            menuItem.css("opacity", 1)
+            
 
-            // transform: translate3d(300px, 0, 0) rotateY(-15deg) rotateX(-15deg) rotateZ(-15deg);
-            // $(this).css("webkitTransform", 'rotate(90deg');
+            $(this).css("webkitTransform", 'translate(' + pt.x + 'px, ' + pt.y + 'px)');
+            // $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)' + 'rotateY(0deg) ' + 'rotateX(0deg) ' + 'rotateZ(' + angle + 'deg)');
+
+            
+            
+            // menuItem.css("opacity", 1)
+            // TweenMax.to(menuItem, 10, {"opacity": 0, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
+            
+
         })
     }
 
-
+    TweenMax.fromTo(menuItem, 2, {"opacity": 0, scale: 0, delay: 1, }, {"opacity": 1, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
 
     var scrollDriction = 0    
     function scrollEvent(scrollPos) {
@@ -252,7 +225,7 @@ $(document).ready(function () {
         } else {
             sp = scrollPos - scrollDriction
         }
-
+        
         scrollDriction = scrollPos
         var headerImageY = 0
         $.each($(".clipImg"), function (index, item) {
@@ -263,8 +236,9 @@ $(document).ready(function () {
 
 
 
-        var menuOffsetScroll = Math.min(menuOffset + scrollPos / windowW, 0.3)
 
+
+        var menuOffsetScroll = Math.min(menuOffset + scrollPos / windowW, 0.3)
         menuToCurve(menuOffsetScroll, 0.3)
 
 
@@ -279,10 +253,11 @@ $(document).ready(function () {
             curveValue = svgRadian - parseFloat(scrollPos * curveRate);
 
             var svgBgD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
-            var svgnavD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight
+            // var svgnavD = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + curveValue + " " + windowW + " " + svgHeight
+
 
             curveBg.setAttribute("d", svgBgD);
-            navCurve.setAttribute("d", svgnavD);
+            navCurve.setAttribute("d", svgBgD.split("V")[0]);
 
         }
     }
