@@ -109,7 +109,7 @@ $(document).ready(function () {
     }
 
     viewbox(windowW, windowH)
-    
+
     // TweenMax.from(curveBg, 0.5, {attr("d": "M 0 " + svgHeight + " Q " + windowW / 2 + " 0 " + windowW + " " + svgHeight + " V 0 H 0 Z")}) 
 
     
@@ -204,15 +204,16 @@ $(document).ready(function () {
             $(this).css("webkitTransform", 'translate(' + pt.x + 'px, ' + pt.y + 'px)');
             // $(this).css("webkitTransform", 'translate3d(' + pt.x + 'px,' + pt.y + 'px, 0)' + 'rotateY(0deg) ' + 'rotateX(0deg) ' + 'rotateZ(' + angle + 'deg)');
 
-            // menuItem.css("opacity", 0.5)
-
-
-            TweenMax.to(menuItem, 1, {opacity: 1, scale: 1, delay: 1})
+            
+            
+            // menuItem.css("opacity", 1)
+            // TweenMax.to(menuItem, 10, {"opacity": 0, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
+            
 
         })
     }
 
-
+    TweenMax.fromTo(menuItem, 2, {"opacity": 0, scale: 0, delay: 1, }, {"opacity": 1, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
 
     var scrollDriction = 0    
     function scrollEvent(scrollPos) {
