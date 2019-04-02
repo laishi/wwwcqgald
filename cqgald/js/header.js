@@ -76,6 +76,9 @@ $(document).ready(function () {
     var resizeRadianHeight = radianHeight * (windowW / windowH / 2)
     var svgRadian = resizeRadianHeight + svgHeight
 
+    $(".headerText").css("marginTop", 500)
+
+
     var viewbox = function (windowW, windowH) {
 
         svgHeight = parseInt(curveBg.getAttribute("d").split(" ")[2]);
@@ -116,7 +119,6 @@ $(document).ready(function () {
 
 
 
-    $(".headerText").css("marginTop", 500)
 
 
 
@@ -213,7 +215,7 @@ $(document).ready(function () {
         })
     }
 
-    TweenMax.fromTo(menuItem, 2, {"opacity": 0, scale: 0, delay: 1, }, {"opacity": 1, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
+    // TweenMax.fromTo(menuItem, 2, {"opacity": 0, scale: 0, delay: 1, }, {"opacity": 1, scale: 1, delay: 1, ease: Elastic.easeOut.config(1.3, 0.3)})
 
     var scrollDriction = 0    
     function scrollEvent(scrollPos) {
