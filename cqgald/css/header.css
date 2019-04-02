@@ -89,10 +89,17 @@ filter: url(#goo-filter);
         z-index: 100;
         background: #ef255f;
         opacity: 0;
+        scale: 0.0;
         z-index: 0;
         cursor: pointer;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        }
+        transition: rotate 1s;
+        -webkit-transition: rotate 1s; /* Safari */
+    }    
+    .menuItem:hover{
+        transform: rotate(45deg);
+
+    }
         
         .menu2  {
 
