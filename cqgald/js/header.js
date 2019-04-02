@@ -1,8 +1,18 @@
 
+
+
+
+
+$(".menuItem").css("background-color", "hsla(" + Math.floor(Math.random() * (180)) + ", 35%, 55%, 1)");
+$(".navPath").attr("stroke", "hsla(" + Math.floor(Math.random() * (180)) + ", 35%, 55%, 1)");
+
+
+
+
+
+
 var eventDirectX = window.innerWidth / 2;
 var eventDirectY = window.innerHeight / 2;
-
-
 
 window.addEventListener('mousemove', function (e) {
 
