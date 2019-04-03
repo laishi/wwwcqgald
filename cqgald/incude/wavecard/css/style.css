@@ -42,14 +42,13 @@
 }
 
 .infoBox {
-    position: absolute;
+    position: relative;
     text-align: center;
     background-color: #2e54aa;
     text-align: center;
     min-height: 10vh;
     color: #eee;
-    top: 70px;
-    width: 100%;
+    top: -10px;
     height: 18vw;
 }
 

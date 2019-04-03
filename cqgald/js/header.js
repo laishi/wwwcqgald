@@ -86,7 +86,7 @@ $(document).ready(function () {
         resizeRadianHeight = radianHeight * (windowW / windowH / 2)
         svgRadian = resizeRadianHeight + svgHeight
 
-        var viewboxSize = "0 0 " + windowW + " " + windowH
+        var viewboxSize = "0 0 " + windowW + " " + Math.min(svgRadian, 800)
         var resizeSvg = "M 0 " + svgHeight + " Q " + windowW / 2 + " " + svgRadian + " " + windowW + " " + svgHeight + " V 0 H 0 Z"
 
         var resizeNavCurve = resizeSvg.split("V")[0]
